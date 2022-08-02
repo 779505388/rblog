@@ -1,0 +1,326 @@
+{% extends "content/base" %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/article.css">
+<link rel="stylesheet" href="/static/css/snackbar.min.css">
+{% endblock css %}
+
+{% block title %}
+文章-{{render_data.article.title}}
+{% endblock title %}
+
+{% block content %}
+<div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col ">
+
+  <!-- Article link & title -->
+  <div style="height: 280px;background-image: url(/static/img/random/material-12.png);"
+    class="post-thumbnail-pure mdl-card__media mdl-color-text--grey-50 ">
+    <p class="article-headline-p"><a href="" target="_self">{{render_data.article.title}}</a></p>
+  </div>
+
+  <!-- Article info-->
+  <div id="post_entry-info">
+    <div class="mdl-card__supporting-text meta mdl-color-text--grey-600 " id="post_entry-left-info">
+      <!-- Author avatar -->
+      <div id="author-avatar">
+        <img src='{{blog_info() | get(key="avatar_proxyz") }}{{blog_info()|get(key="email_hash")}}' width="44px" height="44px">
+      </div>
+      <div style="display: flex;flex-direction: column;">
+        <span class="author-name-span"><strong>{{blog_info() | get(key="nick_name") }}</strong></span>
+        <span class="created">{{render_data.article.created}}</span>
+      </div>
+    </div>
+    <div id="post_entry-right-info" style="color:#0080FF">
+      <span class="post_entry-category">
+        <a href="">文章分类</a> </span>
+    </div>
+
+  </div>
+  <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade">
+    {{ render_data.article.template | safe}}
+  </div>
+  <div id="tag-content">
+
+    {% for tag in render_data.tags %}
+    <div class="chip">
+      <a style="color: #0a69b6;" href="/tag/{{tag.name}}"><span class="chip-title">{{tag.name}}</span></a>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="comment-container mdui-card" style="padding:10px;margin-top: 20px;">
+    <p id="review-btn" style="font-weight: 600;cursor: pointer;"><i class="material-icons">comment</i> 评论</p>
+    <div id="valine_container" class="valine_thread v" data-class="v">
+      <div class="vpanel">
+        <div class="vwrap">
+          <div class="vheader item3 mdui-container-fluid">
+            <input class="mdui-col-lg-4 mdui-col-md-4 mdui-col-sm-4 mdui-col-xs-12 vinput" name="nick" placeholder="昵称"
+              class="vnick vinput" type="text">
+            <input class="mdui-col-lg-4 mdui-col-md-4 mdui-col-sm-4 mdui-col-xs-12 vinput" name="mail" placeholder="邮箱"
+              class="vmail vinput" type="email">
+            <input class="mdui-col-lg-4 mdui-col-md-4 mdui-col-sm-4 mdui-col-xs-12 vinput" name="link"
+              placeholder="网址(https://)" class="vlink vinput" type="text">
+            <input style="display: none;" name="parent_id" type="text">
+            <input style="display: none;" name="articleId" value="{{render_data.article.id}}" type="text">
+            <input style="display: none;" name="parent_uuid" type="text">
+            <input style="display: none;" name="parent_name" type="text">
+          </div>
+          <div class="vedit mdui-col-lg-12 mdui-col-md-12 mdui-col-sm-12 mdui-col-xs-12">
+            <textarea id="veditor" class="veditor vinput" placeholder="想对我说些什么呢"
+              style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 123px;width: 100%;padding-left: 0px;padding-right: 0px;"></textarea>
+            <div class="vrow">
+              <div class="vcol vcol-60 status-bar"></div>
+
+            </div>
+          </div>
+          <div class="vrow mdui-container-fluid" style="margin-top: 7px;">
+            <div class="mdui-col-lg-4 mdui-col-md-4 mdui-col-sm-4 mdui-col-xs-6" style="height:50px">
+              <img id="captcha" style="float: left;height: 36px;margin-top: 5px;cursor: pointer;" src="/captcha"
+                alt="验证图片" srcset="">
+            </div>
+            <input class="mdui-col-lg-4 mdui-col-md-4 mdui-col-sm-4 mdui-col-xs-6 vinput" name="captcha"
+              placeholder="验证码" style="margin-top: 5px;" class="vnick vinput" type="text">
+            <div class="vcol vcol-70 text-right mdui-col-lg-4 mdui-col-md-4 mdui-col-sm-4 mdui-col-xs-12"><button
+                type="button" title="Cmd|Ctrl+Enter" style="margin-top: 5px;"
+                class="vsubmit vbtn mdui-float-right mdui-btn-block">提交</button></div>
+          </div>
+          <div style="display:none;" class="vmark"></div>
+        </div>
+      </div>
+      <div class="vcount" style="display: block;"><span class="vnum"></span> 评论</div>
+      <div class="vload-top text-center" style="display:none;"><i class="vspinner" style="width:30px;height:30px;"></i>
+      </div>
+      <div class="vcards">
+        {% for comment in render_data.comments %}
+        <div class="vcard" ">
+          <img class=" vimg" src='{{blog_info() | get(key="avatar_proxyz") }}{{comment.comment.hash_email}}'>
+          <div class="vh">
+            <div class="vhead">
+              <a class="vnick" id="{{comment.comment.uuid}}" rel="nofollow" href="{{comment.comment.web_site}}"
+                target="_blank">{{comment.comment.user_name}}
+              </a>
+              <span class="vsys">{{comment.comment.agent}}</span>
+              <input class="parent_id" style="display: none;" value="{{comment.comment.id}}" type="text">
+            </div>
+            <div class="vmeta">
+              <span class="vtime created">{{comment.comment.created}}</span>
+              <span class="vat">回复</span>
+            </div>
+            <div class="vcontent">
+              <p>
+                {{comment.comment.text}}
+              </p>
+            </div>
+            <div class="vreply-wrapper"></div>
+            <div class="vquote">
+              {% for i in comment.child_comments %}
+              <div class="vcard" id="{{i.uuid}}"><img class="vimg"
+                  src='{{blog_info()|get(key="avatar_proxyz") }}{{i.hash_email}}'>
+                <div class="vh">
+                  <div class="vhead"><a class="vnick" rel="nofollow" href="{{i.web_site}}"
+                      target="_blank">{{i.user_name}}</a>
+                    <span class="vsys">{{i.agent}}</span>
+                  </div>
+                  <div class="vmeta">
+                    <span class="vtime created">{{i.created}}</span>
+                    <span class="vat">回复</span>
+                  </div>
+                  <div class="vcontent">
+                    <p><a href="#{{i.parent_uuid}}">@{{i.parent_name}}</a> ,
+                      {{i.text}}
+                    </p>
+                  </div>
+                  <div class="vreply-wrapper"></div>
+                  <div class="vquote"></div>
+                </div>
+              </div>
+              {% endfor %}
+
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="vload-bottom text-center" style="display: none;"><i class="vspinner"
+          style="width:30px;height:30px;"></i></div>
+      <div class="vempty" style="display:none;"></div>
+      <div class="vpower txt-right">仿 <a href="https://valine.js.org" target="_blank">Valine</a><br> </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+
+
+{% block pagination %}
+
+<nav class="material-nav mdl-cell mdl-cell--12-col">
+  {% if render_data.prev_page %}
+  <a class="prev" href="/article/{{render_data.prev_url}}"><button id="page-btn"
+      class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+      data-upgraded=",MaterialButton,MaterialRipple"><i class="material-icons" role="presentation">arrow_back</i><span
+        class="mdl-button__ripple-container"><span class="mdl-ripple is-animating"
+          style="width: 92.5097px; height: 92.5097px; transform: translate(-50%, -50%) translate(26px, 6px);">
+        </span></span></button>
+  </a>
+  {% else %}
+  <a class="prev" style="visibility: collapse;"><button id="page-btn"
+      class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+      data-upgraded=",MaterialButton,MaterialRipple"><i class="material-icons" role="presentation">arrow_back</i><span
+        class="mdl-button__ripple-container"><span class="mdl-ripple is-animating"
+          style="width: 92.5097px; height: 92.5097px; transform: translate(-50%, -50%) translate(26px, 6px);">
+        </span></span></button>
+  </a>
+  {% endif %}
+
+  {% if render_data.next_page %}
+  <a class="next" title="" href="/article/{{render_data.next_url}}"><button id="page-btn"
+      class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+      data-upgraded=",MaterialButton,MaterialRipple"><i class="material-icons"
+        role="presentation">arrow_forward</i><span class="mdl-button__ripple-container"><span
+          class="mdl-ripple is-animating"
+          style="width: 92.5097px; height: 92.5097px; transform: translate(-50%, -50%) translate(14px, 14px);"></span></span></button></a>
+  {% else %}
+  <a class="next" style="visibility: collapse;"><button id="page-btn"
+      class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+      data-upgraded=",MaterialButton,MaterialRipple"><i class="material-icons"
+        role="presentation">arrow_forward</i><span class="mdl-button__ripple-container"><span
+          class="mdl-ripple is-animating"
+          style="width: 92.5097px; height: 92.5097px; transform: translate(-50%, -50%) translate(14px, 14px);"></span></span></button></a>
+  {% endif %}
+</nav>
+
+{% endblock pagination %}
+
+{% block js %}
+<script src="/static/js/snackbar.min.js"></script>
+<script>
+  $('.vat').click(function () {
+    let comment = ($(this).parent().parent().children('.vreply-wrapper')[0]);
+    $(comment).append($('.vwrap')[0])
+    let nick = ($(this).parent().parent().children('.vhead').children('.vnick').html());
+    let uuid = $(this).parent().parent().children('.vhead').children('.vnick').attr('id');
+    let parent_id= $(this).parent().parent().children('.vhead').children('.parent_id').val();
+    console.log(parent_id);
+    if (!uuid) {
+      parent_id= $(this).parent().parent().parent().parent().parent().children('.vhead').children('.parent_id').val()
+      uuid = $(this).parent().parent().parent().parent().parent().children('.vhead').children('.vnick').attr('id')
+    }
+    $('#veditor').attr('placeholder', '@ ' + nick);
+    $('input[name="parent_id"]').val(parent_id)
+    $('input[name="captcha"]').val(null)
+    $('#veditor').val(null)
+    $('input[name="parent_uuid"]').val(uuid);
+    console.log(uuid);
+    $('input[name="parent_name"]').val(nick);
+  })
+
+
+  $('.vsubmit').click(function () {
+    console.log('asdsa');
+    let type = 'review'
+    let parentId = $('input[name="parent_id"]').val()
+    let nick = $('input[name="nick"]').val()
+    let mail = $('input[name="mail"]').val()
+    let link = $('input[name="link"]').val()
+    let captcha = $('input[name="captcha"]').val()
+    let text = $('#veditor').val()
+    let parent_uuid = $('input[name="parent_uuid"]').val()
+    let parent_name = $('input[name="parent_name"]').val()
+    let articleId = $('input[name="articleId"]').val()
+    if( parentId) {
+      articleId = null;
+    }
+    if (!nick) {
+      Snackbar.show({
+        text: '昵称为空', actionText: 'Close',
+        pos: 'top-right', backgroundColor: "#1E88E5",
+        actionTextColor: "#000000"
+      });
+      return false
+    }
+    if (!mail) {
+      Snackbar.show({
+        text: '邮箱为空', actionText: 'Close',
+        pos: 'top-right', backgroundColor: "#1E88E5",
+        actionTextColor: "#000000"
+      });
+      return false
+    }
+    if (!text) {
+      Snackbar.show({
+        text: '回复内容为空', actionText: 'Close',
+        pos: 'top-right', backgroundColor: "#1E88E5",
+        actionTextColor: "#000000"
+      });
+      return false
+    }
+    if (!captcha) {
+      Snackbar.show({
+        text: '验证码为空', actionText: 'Close',
+        pos: 'top-right', backgroundColor: "#1E88E5",
+        actionTextColor: "#000000"
+      });
+      return false
+    }
+    let data = {
+      user_name: nick,
+      email: mail,
+      web_site: link,
+      text: text,
+      is_review: true,
+      article_id: parseInt(articleId),
+      parent_id: parseInt(parentId),
+      parent_name,
+      parent_uuid: parent_uuid,
+      is_review: true
+    }
+    $.ajax({
+      type: "post",
+      dataType: 'json',
+      url: "/comment?captcha="+captcha,
+      contentType: 'application/json',
+      data: JSON.stringify(data),
+      success: function (data) {
+        if (data.status === 'success') {
+          localStorage.setItem('nick', nick);
+          localStorage.setItem('mail', mail);
+          localStorage.setItem('link', link);
+          location.reload();
+        } else {
+          Snackbar.show({
+            text: data.message, actionText: 'Close',
+            pos: 'top-right', backgroundColor: "#1E88E5",
+            actionTextColor: "#000000"
+          });
+        }
+      }
+    });
+  })
+
+  $.get("/captcha", function (data, status) {
+    $('#captcha').attr("src", data);
+  });
+  $('#captcha').click(() => {
+    $.get("/captcha", function (data, status) {
+      $('#captcha').attr("src", data);
+    });
+
+  })
+
+  $('#review-btn').click(() => {
+    $('.vpanel')[0].append($('.vwrap')[0])
+    $('#veditor').attr('placeholder', '想对我说些什么呢');
+    $('input[name="parent_id"]').val(null)
+    $('input[name="captcha"]').val(null)
+    $('#veditor').val(null)
+    $('input[name="parent_uuid"]').val(null);
+    $('input[name="parent_name"]').val(null);
+  });
+  $(document).ready(function () {
+    $('input[name="nick"]').val(localStorage.getItem("nick"));
+    $('input[name="mail"]').val(localStorage.getItem("mail"));
+    $('input[name="link"]').val(localStorage.getItem("link"));
+    $('input[name="parent_id"]').val(null);
+    $('input[name="captcha"]').val(null)
+  });
+</script>
+{% endblock js %}

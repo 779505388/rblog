@@ -1,0 +1,96 @@
+.article-content {
+    max-width: 99%;
+}
+
+.link-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap-reverse;
+    flex-flow: row wrap;
+
+
+}
+
+.link-content::after {
+    content: '';
+    flex: auto;
+    /* 或者flex: 1 */
+}
+
+.py-content {
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    font-family: Roboto, Noto, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    color: rgb(121, 121, 121);
+    -webkit-tap-highlight-color: transparent;
+    margin-right: auto !important;
+    margin-left: auto !important;
+    will-change: box-shadow;
+    background: #fff;
+    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+    height: 70px;
+    transition: box-shadow 0.25s;
+    max-width: 300px;
+    margin-top: 10px;
+}
+
+h3.mdui-text-center {
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    font-family: Roboto, Noto, Helvetica, Arial, sans-serif;
+    color: rgb(121, 121, 121);
+    -webkit-tap-highlight-color: transparent;
+    text-align: center !important;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: x-large;
+}
+
+.mdui-text-center{    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    font-size: 14px;
+    font-family: Roboto,Noto,Helvetica,Arial,sans-serif;
+    color: rgb(121, 121, 121);
+    -webkit-tap-highlight-color: transparent;
+    text-align: center!important;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;}
+.mdui-hoverable:hover {
+    box-shadow: 0 6px 6px 0 rgb(0 0 0 / 14%), 0 6px 2px -4px rgb(0 0 0 / 20%), 0 2px 8px 0 rgb(0 0 0 / 12%);
+}
+
+.material-layout__content {
+    margin-top: 65px;
+}
+
+.link-box {
+    min-width: 250px;
+    flex: 0 0 25%;
+    margin-bottom: 25px;
+}
+
+.base-box{
+    display: none;
+}
+
+@media screen and (min-width: 940px) and (max-width: 1260px) {
+    .link-box {
+        flex: 0 0 33%;
+    }
+}
+
+@media screen and (min-width:200px ) and (max-width: 939px) {
+    .link-box {
+        flex: 0 0 50%;
+    }
+}
+
+@media screen  and (max-width: 620px) {
+    .link-box {
+        flex: 0 0 100%;
+    }
+
+}

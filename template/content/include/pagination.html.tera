@@ -1,0 +1,56 @@
+{% if render_data.page_total>1 %}
+
+<nav class="material-nav mdl-cell mdl-cell--12-col">
+    {% if render_data.page!=1 %}
+    <a class="prev" href="?page={{render_data.page-1}}"><button id="page-btn"
+            class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+            data-upgraded=",MaterialButton,MaterialRipple"><i class="material-icons"
+                role="presentation">arrow_back</i><span class="mdl-button__ripple-container"><span
+                    class="mdl-ripple is-animating"
+                    style="width: 92.5097px; height: 92.5097px; transform: translate(-50%, -50%) translate(26px, 6px);">
+                </span></span></button>
+    </a>
+    {% else %}
+    <a class="prev" style="visibility: hidden;"><button id="page-btn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+            data-upgraded=",MaterialButton,MaterialRipple"><i class="material-icons"
+                role="presentation">arrow_back</i><span class="mdl-button__ripple-container"><span
+                    class="mdl-ripple is-animating"
+                    style="width: 92.5097px; height: 92.5097px; transform: translate(-50%, -50%) translate(26px, 6px);">
+                </span></span></button>
+    </a>
+    {% endif %}
+    <span class="page-number current">{{render_data.page}} of {{render_data.page_total}}</span>
+    {% if render_data.page!=render_data.page_total %}
+    <a class="next" title="" href="?page={{render_data.page +1}}"><button id="page-btn"
+            class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+            data-upgraded=",MaterialButton,MaterialRipple"><i class="material-icons"
+                role="presentation">arrow_forward</i><span class="mdl-button__ripple-container"><span
+                    class="mdl-ripple is-animating"
+                    style="width: 92.5097px; height: 92.5097px; transform: translate(-50%, -50%) translate(14px, 14px);"></span></span></button></a>
+    {% else %}
+    <a class="next"  style="visibility: hidden;"><button id="page-btn"
+            class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+            data-upgraded=",MaterialButton,MaterialRipple"><i class="material-icons"
+                role="presentation">arrow_forward</i><span class="mdl-button__ripple-container"><span
+                    class="mdl-ripple is-animating"
+                    style="width: 92.5097px; height: 92.5097px; transform: translate(-50%, -50%) translate(14px, 14px);"></span></span></button></a>
+    {% endif %}
+</nav>
+{% else %}
+<nav class="material-nav mdl-cell mdl-cell--12-col">
+    <a class="prev" style="visibility: hidden;"><button id="page-btn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+            data-upgraded=",MaterialButton,MaterialRipple"><i class="material-icons"
+                role="presentation">arrow_back</i><span class="mdl-button__ripple-container"><span
+                    class="mdl-ripple is-animating"
+                    style="width: 92.5097px; height: 92.5097px; transform: translate(-50%, -50%) translate(26px, 6px);">
+                </span></span></button>
+    </a>
+    <span class="page-number current">1 of 1</span>
+    <a class="next" style="visibility: hidden;" ><button id="page-btn"
+            class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+            data-upgraded=",MaterialButton,MaterialRipple"><i class="material-icons"
+                role="presentation">arrow_forward</i><span class="mdl-button__ripple-container"><span
+                    class="mdl-ripple is-animating"
+                    style="width: 92.5097px; height: 92.5097px; transform: translate(-50%, -50%) translate(14px, 14px);"></span></span></button></a>
+</nav>
+{% endif %}

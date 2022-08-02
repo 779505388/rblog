@@ -1,1 +1,11 @@
 pub mod home;
+pub mod register;
+pub mod article;
+pub mod login;
+pub mod category;
+pub mod tag;
+pub mod link;
+pub mod archive;
+pub mod  captcha;
+pub mod comment;
+pub mod about;

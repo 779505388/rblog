@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- <link rel="stylesheet" href="./css/material.css"> -->
+    <link rel="stylesheet" href="/static/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/material-icons.css">
+    <link rel="stylesheet" href="/static/css/index.css">
+    {% block css %}
+
+    {% endblock css %}
+    {% include "content/include/meta" %}
+    <title>
+        {% block title %}
+
+        {% endblock title %}
+    </title>
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            background-color: #f2f2f5;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .main-content {
+            /* 将 flex-grow 设置为1，该元素会占用全部可使用空间 
+               而其他元素该属性值为0，因此不会得到多余的空间*/
+            /* 1 flex-grow, 0 flex-shrink, auto flex-basis */
+            flex: 1 0 auto;
+        }
+
+        #footer {
+            flex: 0 0 auto;
+        }
+
+        #bottom {
+            color: #9e9e9e;
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-content">
+        <div class="material-layout__content" id="main">
+
+            <div id="top"></div>
+
+            <button class="MD-burger-icon sidebar-toggle" style="display: initial;">
+                <span id="MD-burger-id" class="MD-burger-layer MD-burger-line"></span>
+            </button>
+
+            <!-- Overlay for fixed sidebar -->
+            <div class="sidebar-overlay "></div>
+
+            <!-- Material sidebar -->
+            <aside id="sidebar" class="sidebar sidebar-colored  sidebar-fixed-left" role="navigation">
+
+                <div id="sidebar-main">
+                    <!-- Sidebar Header -->
+                    <div class="sidebar-header header-cover"
+                        style="background-image: url(/static/img/random/material-13.png);">
+                        <!-- Top bar -->
+                        <!--<div class="top-bar"></div>-->
+                        <!-- Sidebar toggle button -->
+                        <button type="button"
+                            class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+                            style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+                            <i class="material-icons">clear_all</i>
+                            <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+                        <!-- Sidebar brand image -->
+                        <div class="sidebar-image">
+                           <a href="/login"><img src='{{blog_info() | get(key="avatar_proxyz") }}{{blog_info() | get(key="email_hash") }}'></a> 
+                        </div>
+
+                    </div>
+                    <!-- Top bar -->
+                    <!--<div class="top-bar"></div>-->
+
+                    <!-- Sidebar Navigation  -->
+                    <ul class="nav sidebar-nav">
+
+                        <!-- Homepage -->
+                        <li id="sidebar-first-li">
+                            <a href="/" target="_self">
+                                <i class="material-icons sidebar-material-icons">home</i>
+                                主页 </a>
+                        </li>
+
+
+                        <!-- Archives  -->
+                        <li id="sidebar-first-li">
+                            <a href="/archive" target="_self">
+                                <i class="material-icons sidebar-material-icons">inbox</i>
+                                归档 </a>
+                        </li>
+
+                        <!-- py  -->
+                        <li id="sidebar-first-li">
+                            <a href="/link" target="_self">
+                                <i class="material-icons sidebar-material-icons">link</i>
+                                友链 </a>
+                        </li>
+
+                        <!-- Archives  -->
+                        <li id="sidebar-first-li">
+                            <a href="/tag" target="_self">
+                                <i class="material-icons sidebar-material-icons mdi-tag">labels</i>
+                                标签 </a>
+                        </li>
+                       
+                        <!-- categories -->
+                        <li class="dropdown">
+                            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                                <i class="material-icons sidebar-material-icons">apps</i>
+                                分类 <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu" for="show-category-button">
+                               {% if render_data.categorys %}
+
+                               {% for category in render_data.categorys %}
+                               <li>
+                                   <a href="/category/{{ category.name}}" title="默认分类">
+                                       {{ category.name}} </a>
+                               </li>
+                               {% endfor %}
+
+                               {% endif %}
+                            </ul>
+                            
+                        </li>
+
+                        <li id="sidebar-first-li">
+                            <a href="/about" target="_self">
+                                <i class="material-icons sidebar-material-icons mdi-tag">info</i>
+                                关于 </a>
+                        </li>
+                    </ul>
+
+                    <!-- Sidebar Footer -->
+                    <div class="sidebar-divider"></div>
+
+                    <!-- Sidebar bottom text -->
+                    <a href="https://github.com/iblh/hexo-theme-material" target="_blank" class="sidebar-footer-text-a">
+                        <div style="text-align: left;" class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div"
+                            data-upgraded=",MaterialButton,MaterialRipple">
+                            主题 - Material
+                            <span class="sidebar-badge badge-circle">md</span>
+                        </div>
+                    </a>
+                </div>
+
+            </aside>
+            <!-- Floating Action Button -->
+
+            <div class="article-content">
+                <div class="base-box" style="height: 90px;width:100%"></div>
+                {% block content %}
+
+                {% endblock content %}
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <div id="footer">
+
+        {% block pagination %}
+
+        {% endblock pagination %}
+        
+        <footer class="mdl-mini-footer" id="bottom">
+
+            <div id="back-to-top" class="toTop-wrap">
+                <a href="#top" class="toTop">
+                    <i class="material-icons footer_top-i">expand_less</i>
+                </a>
+            </div>
+            <!--mdl-mini-footer-left-section-->
+            <div class="mdl-mini-footer--left-section">
+
+
+
+                <a href="" target="_blank">
+                    <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
+                        <span class="visuallyhidden">Twitter</span>
+                    </button>
+                </a>
+
+
+
+
+
+                <a href="" target="_blank">
+                    <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                        <span class="visuallyhidden">Github</span>
+                    </button>
+                </a>
+
+
+                <a href="" target="_blank">
+                    <button class="mdl-mini-footer--social-btn social-btn footer-sns-telegram">
+                        <span class="visuallyhidden">Telegram</span>
+                    </button>
+                </a>
+
+
+            </div>
+
+            <!--copyright-->
+            <div id="copyright">Copyleft (ɔ)
+                2022 某某某 <br><a href="" rel="nofollow" style="color: #9e9e9e" target="_blank">Xxx Xxx</a> &amp;
+                <a>UPYUN <img></a> | <a>XXXXXXX</a>
+            </div>
+            <script>
+                console.log("\n %c 仿 | https://github.com/idawnlight/typecho-theme-material %c \n",
+                    "color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;",
+                    "color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;"
+                )
+            </script>
+
+            <!--mdl-mini-footer-right-section-->
+            <div class="mdl-mini-footer--right-section">
+                <div>
+                    <div class="footer-develop-div">Powered by <a href="" target="_blank"
+                            class="footer-develop-a">HTML</a></div>
+                    <div class="footer-develop-div">Theme - <a target="_blank" class="footer-develop-a">Material</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/js.js"></script>
+    <script>
+        $('.md-github').css('min-height', '150px')
+    </script>
+    <script src="/static/js/moment-with-locales.min.js"></script>
+    <script>
+        $(".created").each(
+            //时间本地化
+            function () {
+                console.log($(this).html());
+                let time = $(this).html();
+                moment.locale();
+                let dateTime = moment(time).format('YYYY年MM月DD日');
+                console.log(dateTime);
+                $(this).text(dateTime);
+            }
+        );
+    
+    </script>
+        {% block js %}
+
+        {% endblock js %}
+        {% include "content/include/script" %}
+</body>
+
+</html>

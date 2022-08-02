@@ -1,0 +1,34 @@
+{% extends "content/base" %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/archive.css">
+<link rel="stylesheet" href="/static/css/fontawesome.min.css">
+{% endblock css %}
+
+{% block content %}
+
+<div id="experience" class="background-alt" style="width: 100%;">
+    <h2 class="heading">Archive</h2>
+    
+    <div id="experience-timeline">
+        {% for article in render_data.articles %}
+        <div data-date="{{article.created}}">
+           <a href="/article/{{article.url_en}}"> <h3>{{article.title}}</h3> </a>
+            <p>
+                {{article.brief}}
+            </p>
+        </div>
+        {% endfor %}
+        
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block js %}
+<script src="/static/js/archive.js"></script>
+{% endblock js %}
+
+{% block pagination %}
+{% include "content/include/pagination" %}
+{% endblock pagination %}

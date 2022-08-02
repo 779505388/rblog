@@ -1,4 +1,6 @@
 [global]
 address = "0.0.0.0"
 port = 8000
-template_dir = "static/template"
+secret_key = "bee8dd5847b78a8153cef01fd32020794a8b30dccfbc76d632cafa1dabdc508a"
+template_dir = "./template"
+

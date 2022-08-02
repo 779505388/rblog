@@ -1,0 +1,50 @@
+{% extends "content/base" %}
+
+
+{% block content %}
+{% for article in render_data.articles %}
+<div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col  fade">
+
+    <!-- Article link & title -->
+    <div style="background-image: url(/static/img/random/material-11.png);"
+        class="post-thumbnail-pure mdl-card__media mdl-color-text--grey-50 ">
+        <p class="article-headline-p"><a href="/article/{{article.url_en}}" target="_self">{{article.title}}</a></p>
+    </div>
+
+    <!-- Article content -->
+    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
+        {{article.brief}} &nbsp;&nbsp;&nbsp;
+        <span>
+            <a href="/article/{{article.url_en}}" target="_self">
+                阅读全文 </a>
+        </span>
+    </div>
+
+    <!-- Article info-->
+    <div id="post_entry-info">
+        <div class="mdl-card__supporting-text meta mdl-color-text--grey-600 " id="post_entry-left-info">
+            <!-- Author avatar -->
+            <div id="author-avatar">
+                <img src='{{blog_info() | get(key="avatar_proxyz") }}{{blog_info() | get(key="email_hash") }}' width="44px" height="44px">
+            </div>
+            <div style="display: flex;flex-direction: column;">
+                <span class="author-name-span"><strong>{{blog_info()|get(key="nick_name") }}</strong></span>
+                <span class="created">{{article.created}}</span>
+            </div>
+        </div>
+        <div id="post_entry-right-info" style="color:#0080FF">
+            <span class="post_entry-category">
+                <a href="/category/{{article.category}}">{{article.category}}</a> </span>
+        </div>
+
+    </div>
+
+</div>
+{% endfor %}
+{% endblock content %}
+
+
+
+{% block pagination %}
+{% include "content/include/pagination" %}
+{% endblock pagination %}

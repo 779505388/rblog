@@ -1,0 +1,19 @@
+{% extends "content/base" %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/tag.css">
+{% endblock css %}
+
+{% block content %}
+<div class="">
+    {% if render_data %}
+
+    {% for i in render_data %}
+    <a href="/tag/{{i.name}}" class="tag">
+        {{i.name}}
+    </a>
+    {% endfor %}
+    {% endif %}
+
+</div>
+{% endblock content %}

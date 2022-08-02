@@ -1,0 +1,34 @@
+{% extends "content/base" %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/link.css">
+{% endblock css %}
+
+{% block content %}
+<div class="link-content ">
+    {% if render_data.links %}
+
+    {% for i in render_data.links %}
+
+    <div class="link-box" >
+        <a href="{{i.link}}" style="text-decoration: none ;color: rgb(121, 121, 121);">
+            <div class="py-content mdui-center mdui-hoverable" mdui-tooltip="{content: 'dadwa'}">
+
+                <div>
+                    <img style="display: inline;float: left;" width="70px" height="70px" src="{{i.avatar}}" alt="">
+                </div>
+                <div style="display:inline;height: 70px;max-width: 230px;">
+                    <div style="padding-top: 1px;">
+                        <h3 class="mdui-text-center" style="margin-top: 10px;">{{i.name}}</h3>
+                    </div>
+                    <p class="mdui-text-truncate mdui-text-center">{{i.brief}}</p>
+                </div>
+
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+</div>
+{% endblock content %}
