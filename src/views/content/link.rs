@@ -1,6 +1,5 @@
 use crate::service::views::link_serv::LinkPageData;
-use crate::utils::response::HandleResponse;
-use rocket::{get, http::Status};
+use rocket::get;
 use rocket_dyn_templates::Template;
 use std::collections::HashMap;
 #[get("/link")]

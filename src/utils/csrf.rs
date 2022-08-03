@@ -3,7 +3,6 @@ use rbatis::DateTimeUtc;
 use rocket::{
     http::{Cookie, Status},
     request::{self, FromRequest, Outcome},
-    response::Redirect,
     Request,
 };
 use serde::{Deserialize, Serialize};
@@ -20,23 +19,18 @@ impl CsrfStatus {
     //加密csrf内容 key储存在cookie中
     pub async fn encrypt_csrf(key: String) -> String {
         let mc = new_magic_crypt!(&key, 192);
-        println!("加密密钥--{:#?}", &key);
         let csrf = json!(CsrfStatus {
             csrf: true,
             date: Some(DateTimeUtc::now())
         })
         .to_string();
         let content = mc.encrypt_str_to_base64(csrf);
-        println!("加密内容--{:#?}", &content);
-        println!("1解密内容--{:#?}", mc.decrypt_base64_to_string(&content));
         content
     }
 
     //解密csrf
     pub async fn decrypt_csrf(key: String, csrf: String) -> CsrfStatus {
         let mc = new_magic_crypt!(&key, 192);
-        println!("解密密钥--{:#?}", &key);
-        println!("解密内容--{:#?}", &csrf);
         let err_value = json!(CsrfStatus {
             csrf: false,
             date: None
@@ -60,9 +54,7 @@ impl<'r> FromRequest<'r> for CsrfStatus {
         };
         let response = req.headers();
         let encrypt = response.get_one("X-CSRFToken").unwrap().to_string();
-        println!("X-CSRFToken--{:#?}", &encrypt);
         let csrf_token = CsrfStatus::decrypt_csrf(csrf_key, encrypt).await;
-        let uuid = Uuid::new_v4().to_string();
         println!("{:#?}", &csrf_token);
         if csrf_token.csrf {
             return Outcome::Success(csrf_token);

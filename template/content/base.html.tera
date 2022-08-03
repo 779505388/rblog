@@ -238,8 +238,8 @@
             <!--mdl-mini-footer-right-section-->
             <div class="mdl-mini-footer--right-section">
                 <div>
-                    <div class="footer-develop-div">Powered by <a href="" target="_blank"
-                            class="footer-develop-a">HTML</a></div>
+                    <div class="footer-develop-div">Powered by <a href="https://github.com/779505388/rblog/" target="_blank"
+                            class="footer-develop-a">Rblog</a></div>
                     <div class="footer-develop-div">Theme - <a target="_blank" class="footer-develop-a">Material</a>
                     </div>
                 </div>

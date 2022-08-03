@@ -1,16 +1,12 @@
-use crate::models::article::Article;
 use crate::{
-    models::{category::Category, comment::Comment},
-    service::views::admin::blog_article_serv::BlogArticle,
+    models::comment::Comment,
     utils::{auth::UserAuth, csrf::CsrfStatus},
 };
-use rocket::http::CookieJar;
 use rocket::serde::json::Json;
-use rocket::{delete, get, post, FromForm};
+use rocket::{delete, get, FromForm};
 use serde::{Serialize, Deserialize};
 use serde_json::json;
 use serde_json::Value;
-use std::collections::HashMap;
 
 //获取所有评论
 #[get("/comment/all")]

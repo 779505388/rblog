@@ -1,18 +1,11 @@
-use crate::models::link::Link;
-use crate::{
-    models::{category::Category, comment::Comment},
-    service::views::admin::blog_article_serv::BlogArticle,
-    utils::{auth::UserAuth, csrf::CsrfStatus},
-};
-use rbatis::DateTimeNative;
-use rocket::data::FromData;
-use rocket::http::CookieJar;
+
+use crate::utils::{auth::UserAuth, csrf::CsrfStatus};
+
 use rocket::serde::json::Json;
-use rocket::{delete, get, post, put, FromForm};
+use rocket::{ get, post,FromForm};
 use serde::{Deserialize, Serialize};
 use serde_json::json;
 use serde_json::Value;
-use std::collections::HashMap;
 use std::fs;
 
 #[get("/about")]
@@ -35,12 +28,12 @@ pub async fn api_about_post(
     form_data: Json<AbotForm>,
 ) -> Value {
     let data = form_data.into_inner();
-    let meta = fs::write(
+    let _meta = fs::write(
         "template/content/include/meta.html.tera",
         data.meta.unwrap_or("".to_string()),
     )
     .unwrap();
-    let script = fs::write(
+    let _script = fs::write(
         "template/content/include/script.html.tera",
         data.script.unwrap_or("".to_string()),
     )

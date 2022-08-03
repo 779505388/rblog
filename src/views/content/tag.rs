@@ -19,7 +19,7 @@ pub async fn index_tag(tag: Option<&str>, page: Option<usize>) -> HandleResponse
         Some(i) => i,
         None => 1,
     };
-    let mut is_none = match tag {
+    let is_none = match tag {
         Some(_) => false,
         None => true,
     };

@@ -26,7 +26,7 @@ pub async fn list( _user_auth: UserAuth, cookies: &CookieJar<'_>) -> Template {
     template
 }
 #[post("/article-list")]
-pub async fn post_article(_user_auth: UserAuth, csrf_token: CsrfStatus) -> Value {
+pub async fn post_article(_user_auth: UserAuth, _csrf_token: CsrfStatus) -> Value {
     let list = BlogArticle::article_list().await;
     json!({ "data": list })
 }
@@ -45,7 +45,7 @@ pub async fn modify(id:usize, _user_auth: UserAuth, cookies: &CookieJar<'_>) -> 
 }
 
 #[post("/article-modify/<id>")]
-pub async fn post_modify(id:usize,_user_auth: UserAuth, csrf_token: CsrfStatus) -> Value {
+pub async fn post_modify(id:usize,_user_auth: UserAuth, _csrf_token: CsrfStatus) -> Value {
     let article = BlogArticle::article_modify(&id).await;
     let category = Category::get_all().await;
     json!({

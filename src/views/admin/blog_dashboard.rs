@@ -2,7 +2,7 @@ use crate::{
     service::views::admin::dashboard_serv::DashboardInfo,
     utils::{
         auth::UserAuth,
-        csrf::{CsrfKey, CsrfStatus},
+        csrf::CsrfStatus,
     },
 };
 use rocket::http::CookieJar;
@@ -24,7 +24,7 @@ pub async fn index( _user_auth: UserAuth, cookies: &CookieJar<'_>) -> Template {
     template
 }
 #[post("/dashboard/info")]
-pub async fn info(_user_auth: UserAuth, csrf_token: CsrfStatus) -> Value {
+pub async fn info(_user_auth: UserAuth, _csrf_token: CsrfStatus) -> Value {
     let info = DashboardInfo::service_dashboard().await;
     json!({ "data": info })
 }

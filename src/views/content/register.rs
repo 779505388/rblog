@@ -1,8 +1,6 @@
 use crate::models::user::User;
-use crate::CONFIG;
 use rocket::figment::Figment;
 use rocket::figment::providers::{Toml, Format};
-use rocket::form::Form;
 use rocket::route;
 use rocket::serde::json::Json;
 use rocket::serde::json::{serde_json::json, Value};
@@ -12,7 +10,6 @@ use std::collections::HashMap;
 pub async fn index() -> Template {
     let mut context = HashMap::new();
     context.insert("users", "users");
-    println!("{:#?}", &context);
 
     Template::render("content/register", context)
 }

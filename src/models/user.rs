@@ -1,8 +1,6 @@
 use crate::RB;
-use asciis::asc::Asciis;
-use rbatis::{crud::CRUD, db::DBExecResult};
-use rbatis::{crud_table, Error};
-use rocket::serde::json::Json;
+use rbatis::crud::CRUD;
+use rbatis::crud_table;
 use rocket::serde::json::{serde_json::json, Value};
 use rocket::serde::{Deserialize, Serialize};
 use rocket::FromForm;
@@ -66,9 +64,9 @@ impl User {
     /// ---
     /// @return  Result<Vec<User>, Error>
     /// ---
-    pub async fn get_user_list() -> Result<Vec<User>, Error> {
-        RB.fetch_list::<User>().await
-    }
+    // pub async fn get_user_list() -> Result<Vec<User>, Error> {
+    //     RB.fetch_list::<User>().await
+    // }
 
     /// 删除用户
     /// ---
@@ -102,7 +100,7 @@ impl User {
                 mail_hash: Some(format!("{:x}", digest)),
                 ..user
             };
-            RB.save::<User>(&user_data, &[]).await;
+            let _r= RB.save::<User>(&user_data, &[]).await;
             // return json!({"status":"success","message":"注册成功！"});
            return true;
         } else {
@@ -112,15 +110,15 @@ impl User {
     }
 
     //获取博主hash-email
-    pub async fn get_hash_email() -> Option<String> {
-        let w = RB.new_wrapper().limit(1);
-        let r = RB.fetch_by_wrapper::<User>(w).await;
-        let mail_hash = match r {
-            Ok(i) => i.mail_hash,
-            Err(_) => None,
-        };
-        mail_hash
-    }
+    // pub async fn get_hash_email() -> Option<String> {
+    //     let w = RB.new_wrapper().limit(1);
+    //     let r = RB.fetch_by_wrapper::<User>(w).await;
+    //     let mail_hash = match r {
+    //         Ok(i) => i.mail_hash,
+    //         Err(_) => None,
+    //     };
+    //     mail_hash
+    // }
 
     //获取博主信息
     pub async fn get_user_by_email(email: &str) -> User {

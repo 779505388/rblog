@@ -1,11 +1,7 @@
-use dotenv::dotenv;
-use rocket_dyn_templates::tera::{Error, Result};
+use rocket_dyn_templates::tera::Result;
 use serde::{Deserialize, Serialize};
-use serde_json::{from_value, json, to_value, Value};
-use std::{
-    collections::{BTreeMap, HashMap},
-    env,
-};
+use serde_json::{json, Value};
+use std::collections::HashMap;
 
 use crate::CONFIG;
 #[derive(Serialize, Deserialize, Clone, Debug)]
