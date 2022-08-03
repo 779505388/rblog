@@ -13,7 +13,8 @@
 <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col ">
 
   <!-- Article link & title -->
-  <div style="height: 280px;background-image: url(/static/img/random/material-12.png);"
+  <div style="height: 280px;
+  background-image: url({% if render_data.article.image_url %} {{render_data.article.image_url}} {% else %} /api/content/random_img {% endif %});"
     class="post-thumbnail-pure mdl-card__media mdl-color-text--grey-50 ">
     <p class="article-headline-p"><a href="" target="_self">{{render_data.article.title}}</a></p>
   </div>

@@ -13,7 +13,7 @@ CREATE TABLE `article`  (
   `url_en` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL ,
   `text` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `template` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `image_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `image_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci ,
   `category` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `like_count`int(11),
   `views` int(11),

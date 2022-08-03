@@ -2,7 +2,7 @@
 extern crate lazy_static;
 
 use std::sync::Arc;
-use std::{env};
+use std::env;
 
 use crate::service::api::admin::{article_api, category_api, comment_api,
     link_api,tag_api,about_api,setting_api};

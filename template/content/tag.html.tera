@@ -6,7 +6,7 @@
 <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col  fade">
 
     <!-- Article link & title -->
-    <div style="background-image: url(/static/img/random/material-11.png);"
+    <div style="background-image: url({% if article.image_url %} {{article.image_url}} {% else %} /api/content/random_img?age={{article.url_en}} {% endif %});"
         class="post-thumbnail-pure mdl-card__media mdl-color-text--grey-50 ">
         <p class="article-headline-p"><a href="/article/{{article.url_en}}" target="_self">{{article.title}}</a></p>
     </div>
