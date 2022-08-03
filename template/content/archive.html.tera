@@ -7,6 +7,10 @@
 
 {% block content %}
 
+{% block title %}
+归档
+{% endblock title %}
+
 <div id="experience" class="background-alt" style="width: 100%;">
     <h2 class="heading">Archive</h2>
     

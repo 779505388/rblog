@@ -1,5 +1,8 @@
 {% extends "content/base" %}
 
+{% block title %}
+文章分类
+{% endblock title %}
 
 {% block content %}
 {% if render_data.articles %}

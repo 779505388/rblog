@@ -1,5 +1,8 @@
 {% extends "content/base" %}
 
+{% block title %}
+标签
+{% endblock title %}
 
 {% block content %}
 {% for article in render_data.articles %}
