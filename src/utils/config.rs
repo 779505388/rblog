@@ -16,6 +16,7 @@ pub struct Setting {
     pub register: Arc<Mutex<bool>>,
     pub github: Arc<Mutex<String>>,
     pub zhihu: Arc<Mutex<String>>,
+    pub telegram: Arc<Mutex<String>>,
     pub email: Arc<Mutex<String>>,
 }
 
@@ -74,6 +75,12 @@ impl Setting {
             .unwrap()
             .into_string()
             .unwrap_or("".to_string());
+        let telegram = data
+            .find_value("telegram")
+            .ok()
+            .unwrap()
+            .into_string()
+            .unwrap_or("".to_string());
         let email_hash = data
             .find_value("email_hash")
             .ok()
@@ -97,6 +104,7 @@ impl Setting {
             email: Arc::new(Mutex::new(email)),
             article_num: Arc::new(Mutex::new(article_num)),
             nick_name: Arc::new(Mutex::new(nick_name)),
+            telegram: Arc::new(Mutex::new(telegram)),
         }
     }
 }

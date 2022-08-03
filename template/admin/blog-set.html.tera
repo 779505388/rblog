@@ -48,12 +48,13 @@
   <v-card-text class="text--primary">
     <v-text-field clearable label='博客的名字' v-model='blogName' placeholder="博客名" :rules="rules"></v-text-field>
     <v-text-field clearable label='用户昵称' v-model='nickname' placeholder="昵称" :rules="rules"></v-text-field>
+    <v-text-field clearable label='avatar头像的代理接口' v-model='avatar' placeholder="头像代理接口"></v-text-field>
     <v-text-field clearable label='域名，生成站点地图' v-model='domain' placeholder="域名" :rules="rules"></v-text-field>
     <v-text-field clearable label='显示的文章数目' v-model.number='articleNum' placeholder="显示文章数" :rules="rules">
     </v-text-field>
     <v-text-field clearable label='GitHub' v-model='github' placeholder="Gitgub"></v-text-field>
-    <v-text-field clearable label='avatar头像的代理接口' v-model='avatar' placeholder="头像代理接口"></v-text-field>
-    <v-text-field clearable label='ZhiHu' v-model='zhihu' placeholder="随机图片接口"></v-text-field>
+    <v-text-field clearable label='Telegram' v-model='telegram' placeholder="Telegram"></v-text-field>
+    <v-text-field clearable label='ZhiHu' v-model='zhihu' placeholder="Zhihu"></v-text-field>
     <v-switch v-model="register" :label="register?'允许注册':'关闭注册'"></v-switch>
 
     <v-btn block color="blue lighten-1" @click='putConfig' text>
@@ -95,6 +96,7 @@
       avatar: '',
       zhihu: '',
       data: [],
+      telegram:'',
       email: '',
       username: '',
       nickname:'',
@@ -143,6 +145,7 @@
           this.avatar = res.data.data.avatar_proxyz;
           this.zhihu = res.data.data.zhihu;
           this.domain = res.data.data.domain;
+          this.telegram = res.data.data.telegram;
           this.github = res.data.data.github;
           this.email = res.data.data.email;
           this.register = res.data.data.register;
@@ -160,6 +163,7 @@
         this.data.domain = this.domain
         this.data.email = this.email
         this.data.github = this.github
+        this.data.telegram = this.telegram
         this.data.register = this.register
         axios.post('/api/admin/setting/info', this.data, {
           headers: {

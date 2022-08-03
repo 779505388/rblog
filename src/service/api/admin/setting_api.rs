@@ -35,7 +35,8 @@ pub async fn api_setting_get(
         "domain":config.domain,
         "register":config.register,
         "github":config.github,
-        "zhihu":config.github,
+        "zhihu":config.zhihu,
+        "telegram":config.telegram,
         "email":user.mail
     }})
 }
@@ -50,6 +51,7 @@ pub struct InfoForm {
     pub register: Option<bool>,
     pub github: Option<String>,
     pub zhihu: Option<String>,
+    pub telegram: Option<String>,
     pub email: Option<String>,
 }
 #[post("/setting/info", data = "<form_data>")]
@@ -71,10 +73,11 @@ article_num="{}"
 nick_name="{}"
 blog_name="{}"
 domain ="{}"
-email_hash = "{}" #自动填写
+email_hash = "{}"  #邮箱MD5值，自动填写
 register="{}"
 github="{}"
 zhihu="{}"
+telegram="{}"
 email="{}"
     "#,
         data_copy
@@ -90,6 +93,7 @@ email="{}"
         data_copy.register.unwrap_or(false),
         data_copy.github.unwrap_or("".to_string()),
         data_copy.zhihu.unwrap_or("".to_string()),
+        data_copy.telegram.unwrap_or("".to_string()),
         data_copy.email.unwrap_or("".to_string())
     );
     fs::write("Blog.toml", text).unwrap();
@@ -103,6 +107,7 @@ email="{}"
     let mut register = setting.register.try_lock().unwrap();
     let mut github = setting.github.try_lock().unwrap();
     let mut zhihu = setting.zhihu.try_lock().unwrap();
+    let mut telegram = setting.telegram.try_lock().unwrap();
     let mut email = setting.email.try_lock().unwrap();
     *blog_name = data.blog_name.unwrap_or("博客未命名".to_string());
     *avatar_proxyz = data
@@ -115,22 +120,8 @@ email="{}"
     *register = data.register.unwrap_or(false);
     *github = data.github.unwrap_or("".to_string());
     *zhihu = data.zhihu.unwrap_or("".to_string());
+    *telegram = data.telegram.unwrap_or("".to_string());
     *email = data.email.clone().unwrap_or("".to_string());
-    // let user_id = cookies
-    //     .get_private("login_user_id")
-    //     .unwrap()
-    //     .value()
-    //     .to_string().parse::<usize>().unwrap();
-
-    // let user = User {
-    //     id: Some(user_id),
-    //     username: None,
-    //     password: None,
-    //     nickname: Some(data.nick_name.clone().unwrap_or("用户未命名".to_string())),
-    //     mail: Some(data.email.unwrap_or("".to_string())),
-    //     mail_hash: Some(email_hash),
-    // };
-    // let status = User::update_user(user).await;
     json!({"status":"success","message":"修改用户信息成功！"})
 }
 

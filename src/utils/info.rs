@@ -12,6 +12,7 @@ pub struct BlogInfo {
     pub email_hash: Option<String>,
     pub github: Option<String>,
     pub zhihu: Option<String>,
+    pub telegram: Option<String>,
     pub email: Option<String>,
 }
 
@@ -23,6 +24,7 @@ pub fn blog_info(_args: &HashMap<String, Value>) -> Result<Value> {
     let github = data.github.try_lock().unwrap().to_string();
     let zhihu = data.zhihu.try_lock().unwrap().to_string();
     let email = data.email.try_lock().unwrap().to_string();
+    let telegram = data.telegram.try_lock().unwrap().to_string();
     let nick_name = data.nick_name.try_lock().unwrap().to_string();
     let info = BlogInfo {
         blog_name: Some(blog_name),
@@ -32,6 +34,7 @@ pub fn blog_info(_args: &HashMap<String, Value>) -> Result<Value> {
         zhihu: Some(zhihu),
         email: Some(email),
         nick_name: Some(nick_name),
+        telegram: Some(telegram),
     };
     Ok(json!(info))
 }
