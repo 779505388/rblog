@@ -6,7 +6,7 @@ use std::env;
 
 use crate::service::api::admin::{article_api, category_api, comment_api,
     link_api,tag_api,about_api,setting_api};
-use crate::service::api::content::random_img;
+use crate::service::api::content::{random_img,sitemap};
 use rbatis::rbatis::Rbatis;
 use rocket::catchers;
 use rocket::fs::FileServer;
@@ -112,7 +112,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         )
         .mount(
             "/api/content",
-            routes![random_img::api_random_img]
+            routes![random_img::api_random_img,
+            sitemap::api_sitemap_get
+            ]
         )
         .register("/", catchers![error::not_found])
         .register("/", catchers![error::server_error])

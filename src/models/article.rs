@@ -21,6 +21,13 @@ pub struct Article {
 }
 
 impl Article {
+    //获取所有文章
+    pub async fn get_all() -> Vec<Article> {
+        let w = RB.new_wrapper().order_by(true, &["id"]);
+        let r = RB.fetch_list_by_wrapper::<Article>(w).await;
+        r.unwrap()
+    }
+
     // 获取文章列表
     // page：页数
     //num：每页显示文章数量
@@ -157,6 +164,6 @@ impl Article {
                 return false;
             };
         }
-    return true;
+        return true;
     }
 }
