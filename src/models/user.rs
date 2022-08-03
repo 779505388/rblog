@@ -4,7 +4,8 @@ use rbatis::crud_table;
 use rocket::serde::json::{serde_json::json, Value};
 use rocket::serde::{Deserialize, Serialize};
 use rocket::FromForm;
-use sha2::{Digest, Sha256};
+extern crate bcrypt;
+use bcrypt::{hash, verify};
 #[crud_table(table_name:user)]
 #[derive(Deserialize, Serialize, Clone, Debug, FromForm)]
 pub struct User {
@@ -16,43 +17,20 @@ pub struct User {
     pub mail_hash: Option<String>,
 }
 
-
-
 impl User {
-
-    pub fn bcrypt(password: String, salt: String) -> String {
-        //加密密码--sha3
-        let mut password_sha3 = Sha256::new();
-        let mut salt_sha3 = Sha256::new();
-        let mut result = Sha256::new();
-        password_sha3.update(&password);
-        salt_sha3.update(&salt);
-        let password_result = password_sha3.finalize();
-        let salt_result = salt_sha3.finalize();
-        let passwrod_salt = format!("{:x}-sd278?><{:x}", password_result, salt_result);
-        result.update(&passwrod_salt);
-        format!("{:x}", result.finalize())
-    }
-    /// 登录
-    /// ---
-    /// @parameter    username    &str
-    /// @parameter    password    &str
-    /// @return    Result<User, Error>
-    /// ---
+    //登陆博客验证
     pub async fn login_blog(mail: &str, password: &str) -> Value {
-        let encode_pwd = User::bcrypt(password.to_string(), "salt".to_string());
-        println!("加密后的明文密码：{:#?}", encode_pwd);
-        let w = RB
-            .new_wrapper()
-            .eq("mail", mail)
-            .and()
-            .eq("password", encode_pwd);
+        let w = RB.new_wrapper().eq("mail", mail).limit(1);
         let login_info = RB.fetch_by_wrapper::<User>(w).await;
-        let login_status: bool;
-        match login_info {
-            Ok(_) => login_status = true,
-            Err(_) => login_status = false,
+        let login_status = match login_info {
+            Ok(_) => true,
+            Err(_) => false,
         };
+        if !login_status {
+            return json!({"status":"error","message":"用户不存在！"});
+        };
+        let login_status: bool =
+            verify(password, &login_info.unwrap().password.unwrap()).unwrap_or(false);
         if login_status {
             return json!({"status":"success","message":"登陆成功！"});
         } else {
@@ -94,18 +72,18 @@ impl User {
             .unwrap();
         if user_mail.len() == 0 && user_username.len() == 0 {
             let digest = md5::compute(&mail);
-            password = User::bcrypt(password, "salt".to_string());
+            password = hash(&password, 7).unwrap();
             let user_data = User {
                 password: Some(password),
                 mail_hash: Some(format!("{:x}", digest)),
                 ..user
             };
-            let _r= RB.save::<User>(&user_data, &[]).await;
+            let _r = RB.save::<User>(&user_data, &[]).await;
             // return json!({"status":"success","message":"注册成功！"});
-           return true;
+            return true;
         } else {
             // return json!({"status":"error","message":"用户名或邮箱已经存在！"});
-           return false;
+            return false;
         };
     }
 
@@ -146,17 +124,9 @@ impl User {
         }
     }
     pub async fn verify_password(user_id: &usize, password: &str) -> bool {
-        let encode_pwd = User::bcrypt(password.to_string(), "salt".to_string());
-        println!("加密后的明文密码：{:#?}", encode_pwd);
-        let w = RB
-            .new_wrapper()
-            .eq("id", user_id)
-            .and()
-            .eq("password", encode_pwd);
-        let user_info = RB.fetch_by_wrapper::<User>(w).await;
-        match user_info {
-            Ok(_) => true,
-            Err(_) => false,
-        }
+        let w = RB.new_wrapper().eq("id", user_id).limit(1);
+        let user_info = RB.fetch_by_wrapper::<User>(w).await.unwrap();
+        let status = verify(password, &user_info.password.unwrap()).unwrap_or(false);
+        status
     }
 }

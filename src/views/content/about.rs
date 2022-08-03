@@ -1,4 +1,4 @@
-use rocket::{get, http::Status};
+use rocket::get;
 use rocket_dyn_templates::Template;
 use std::collections::HashMap;
 

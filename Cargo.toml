@@ -28,7 +28,8 @@ r2d2="*"
 r2d2_redis = "*"
 psutil = "3.2.1"
 magic-crypt = "3.1.10"
-# bcrypt = "0.13.0"
+bcrypt = "*"
+
 [dependencies.rocket_dyn_templates]
 features = ["tera"]
 default-features = false

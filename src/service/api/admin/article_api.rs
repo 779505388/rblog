@@ -7,7 +7,6 @@ use crate::{
     utils::{auth::UserAuth, csrf::CsrfStatus},
 };
 use rbatis::{DateTimeNative, DateTimeUtc};
-use rocket::http::CookieJar;
 use rocket::serde::json::Json;
 use rocket::{delete, get, post, put};
 use serde::{Deserialize, Serialize};

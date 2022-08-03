@@ -4,7 +4,7 @@ use rocket::http::{Cookie, CookieJar};
 use rocket::response::Redirect;
 use rocket::route;
 use rocket::serde::json::Json;
-use rocket::serde::json::{serde_json::json, Value};
+use rocket::serde::json::Value;
 use rocket_dyn_templates::Template;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;

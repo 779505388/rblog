@@ -9,7 +9,7 @@ use serde::{Deserialize, Serialize};
 use serde_json::json;
 use serde_json::Value;
 use std::fs;
-
+use bcrypt::hash;
 //获取设置信息
 #[get("/setting")]
 pub async fn api_setting_get(
@@ -157,7 +157,7 @@ pub async fn api_setting_post_user(
         let new_password = data.new_password.unwrap();
         let verify = User::verify_password(&user_id, &old_password).await;
         if verify {
-            let encode_pwd = User::bcrypt(new_password.clone(), "salt".to_string());
+            let encode_pwd = hash(new_password.clone(), 7).unwrap();
             let user = User {
                 id: Some(user_id),
                 username: Some(data.user_name.unwrap()),

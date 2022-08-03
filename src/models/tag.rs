@@ -218,6 +218,4 @@ impl TagArticle {
     }
 }
 
-pub struct Tags {
-    tags: Option<Tag>,
-}
+

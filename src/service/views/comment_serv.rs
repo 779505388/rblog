@@ -3,7 +3,7 @@ url：/comment 对应的服务；
 */
 use crate::models::comment::Comment;
 use md5::compute;
-use rbatis::{DateTimeNative, DateTimeUtc};
+use rbatis::DateTimeNative;
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
