@@ -13,7 +13,7 @@
   <v-list nav class="py-0 ">
     <v-list-item two-line>
       <v-list-item-avatar>
-        <img src='{{blog_info() | get(key="avatar_proxyz") }}{{blog_info() | get(key="email_hash") }}'>
+        <img src='{{blog_info() | get(key="avatar_proxyz") }}/{{blog_info() | get(key="email_hash") }}'>
       </v-list-item-avatar>
 
       <v-list-item-content class="white--text">

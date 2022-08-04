@@ -3,6 +3,7 @@
 {% block css %}
 <link rel="stylesheet" href="/static/css/article.css">
 <link rel="stylesheet" href="/static/css/snackbar.min.css">
+<link rel="stylesheet" href="/static/css/GrayMac.min.css">
 {% endblock css %}
 
 {% block title %}
@@ -193,6 +194,10 @@
 
 {% block js %}
 <script src="/static/js/snackbar.min.js"></script>
+<script src="/static/js/prism.min.js"></script>
+<script>
+Prism.highlightAll()
+</script>
 <script>
   $('.vat').click(function () {
     let comment = ($(this).parent().parent().children('.vreply-wrapper')[0]);
