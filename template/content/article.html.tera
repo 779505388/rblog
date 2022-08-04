@@ -14,7 +14,8 @@
 <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col ">
 
   <!-- Article link & title -->
-  <div style="height: 280px;
+  <div
+    style="height: 280px;
   background-image: url({% if render_data.article.image_url %} {{render_data.article.image_url}} {% else %} /api/content/random_img {% endif %});"
     class="post-thumbnail-pure mdl-card__media mdl-color-text--grey-50 ">
     <p class="article-headline-p"><a href="" target="_self">{{render_data.article.title}}</a></p>
@@ -25,16 +26,18 @@
     <div class="mdl-card__supporting-text meta mdl-color-text--grey-600 " id="post_entry-left-info">
       <!-- Author avatar -->
       <div id="author-avatar">
-        <img src='{{blog_info() | get(key="avatar_proxyz") }}/{{blog_info()|get(key="email_hash")}}' width="44px" height="44px">
+        <img src='{{blog_info() | get(key="avatar_proxyz") }}/{{blog_info()|get(key="email_hash")}}' width="44px"
+          height="44px">
       </div>
       <div style="display: flex;flex-direction: column;">
         <span class="author-name-span"><strong>{{blog_info() | get(key="nick_name") }}</strong></span>
         <span class="created">{{render_data.article.created}}</span>
       </div>
     </div>
-    <div id="post_entry-right-info" style="color:#0080FF">
-      <span class="post_entry-category">
-        <a href="">文章分类</a> </span>
+    <div id="post_entry-right-info">
+      <span class="post_entry-category" id="read-time" style="color: #6a6a6a">
+        
+      </span>
     </div>
 
   </div>
@@ -196,7 +199,7 @@
 <script src="/static/js/snackbar.min.js"></script>
 <script src="/static/js/prism.min.js"></script>
 <script>
-Prism.highlightAll()
+  Prism.highlightAll()
 </script>
 <script>
   $('.vat').click(function () {
@@ -204,10 +207,11 @@ Prism.highlightAll()
     $(comment).append($('.vwrap')[0])
     let nick = ($(this).parent().parent().children('.vhead').children('.vnick').html());
     let uuid = $(this).parent().parent().children('.vhead').children('.vnick').attr('id');
-    let parent_id= $(this).parent().parent().children('.vhead').children('.parent_id').val();
+    let parent_id = $(this).parent().parent().children('.vhead').children('.parent_id').val();
     console.log(parent_id);
     if (!uuid) {
-      parent_id= $(this).parent().parent().parent().parent().parent().children('.vhead').children('.parent_id').val()
+      parent_id = $(this).parent().parent().parent().parent().parent().children('.vhead').children('.parent_id')
+        .val()
       uuid = $(this).parent().parent().parent().parent().parent().children('.vhead').children('.vnick').attr('id')
     }
     $('#veditor').attr('placeholder', '@ ' + nick);
@@ -232,37 +236,45 @@ Prism.highlightAll()
     let parent_uuid = $('input[name="parent_uuid"]').val()
     let parent_name = $('input[name="parent_name"]').val()
     let articleId = $('input[name="articleId"]').val()
-    if( parentId) {
+    if (parentId) {
       articleId = null;
     }
     if (!nick) {
       Snackbar.show({
-        text: '昵称为空', actionText: 'Close',
-        pos: 'top-right', backgroundColor: "#1E88E5",
+        text: '昵称为空',
+        actionText: 'Close',
+        pos: 'top-right',
+        backgroundColor: "#1E88E5",
         actionTextColor: "#000000"
       });
       return false
     }
     if (!mail) {
       Snackbar.show({
-        text: '邮箱为空', actionText: 'Close',
-        pos: 'top-right', backgroundColor: "#1E88E5",
+        text: '邮箱为空',
+        actionText: 'Close',
+        pos: 'top-right',
+        backgroundColor: "#1E88E5",
         actionTextColor: "#000000"
       });
       return false
     }
     if (!text) {
       Snackbar.show({
-        text: '回复内容为空', actionText: 'Close',
-        pos: 'top-right', backgroundColor: "#1E88E5",
+        text: '回复内容为空',
+        actionText: 'Close',
+        pos: 'top-right',
+        backgroundColor: "#1E88E5",
         actionTextColor: "#000000"
       });
       return false
     }
     if (!captcha) {
       Snackbar.show({
-        text: '验证码为空', actionText: 'Close',
-        pos: 'top-right', backgroundColor: "#1E88E5",
+        text: '验证码为空',
+        actionText: 'Close',
+        pos: 'top-right',
+        backgroundColor: "#1E88E5",
         actionTextColor: "#000000"
       });
       return false
@@ -282,7 +294,7 @@ Prism.highlightAll()
     $.ajax({
       type: "post",
       dataType: 'json',
-      url: "/comment?captcha="+captcha,
+      url: "/comment?captcha=" + captcha,
       contentType: 'application/json',
       data: JSON.stringify(data),
       success: function (data) {
@@ -293,8 +305,10 @@ Prism.highlightAll()
           location.reload();
         } else {
           Snackbar.show({
-            text: data.message, actionText: 'Close',
-            pos: 'top-right', backgroundColor: "#1E88E5",
+            text: data.message,
+            actionText: 'Close',
+            pos: 'top-right',
+            backgroundColor: "#1E88E5",
             actionTextColor: "#000000"
           });
         }
@@ -326,7 +340,16 @@ Prism.highlightAll()
     $('input[name="mail"]').val(localStorage.getItem("mail"));
     $('input[name="link"]').val(localStorage.getItem("link"));
     $('input[name="parent_id"]').val(null);
-    $('input[name="captcha"]').val(null)
+    $('input[name="captcha"]').val(null);
+    var readLengthPerMinute = 400; 
+    var textLength = $('#post-content').text().length; //获取文章长度
+    var readTime;
+    if (textLength <= readLengthPerMinute) {
+      readTime = 1;
+    } else {
+      readTime = Math.round(textLength / readLengthPerMinute);
+    };
+    $("#read-time").html("阅读时间: "+readTime+" min");
   });
 </script>
 {% endblock js %}
