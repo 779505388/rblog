@@ -55,7 +55,6 @@ impl<'r> FromRequest<'r> for CsrfStatus {
         let response = req.headers();
         let encrypt = response.get_one("X-CSRFToken").unwrap().to_string();
         let csrf_token = CsrfStatus::decrypt_csrf(csrf_key, encrypt).await;
-        println!("{:#?}", &csrf_token);
         if csrf_token.csrf {
             return Outcome::Success(csrf_token);
         } else {

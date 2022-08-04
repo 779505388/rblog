@@ -24,7 +24,7 @@
     <div class="mdl-card__supporting-text meta mdl-color-text--grey-600 " id="post_entry-left-info">
       <!-- Author avatar -->
       <div id="author-avatar">
-        <img src='{{blog_info() | get(key="avatar_proxyz") }}{{blog_info()|get(key="email_hash")}}' width="44px" height="44px">
+        <img src='{{blog_info() | get(key="avatar_proxyz") }}/{{blog_info()|get(key="email_hash")}}' width="44px" height="44px">
       </div>
       <div style="display: flex;flex-direction: column;">
         <span class="author-name-span"><strong>{{blog_info() | get(key="nick_name") }}</strong></span>
@@ -93,7 +93,7 @@
       <div class="vcards">
         {% for comment in render_data.comments %}
         <div class="vcard" ">
-          <img class=" vimg" src='{{blog_info() | get(key="avatar_proxyz") }}{{comment.comment.hash_email}}'>
+          <img class=" vimg" src='{{blog_info() | get(key="avatar_proxyz") }}/{{comment.comment.hash_email}}'>
           <div class="vh">
             <div class="vhead">
               <a class="vnick" id="{{comment.comment.uuid}}" rel="nofollow" href="{{comment.comment.web_site}}"
@@ -115,7 +115,7 @@
             <div class="vquote">
               {% for i in comment.child_comments %}
               <div class="vcard" id="{{i.uuid}}"><img class="vimg"
-                  src='{{blog_info()|get(key="avatar_proxyz") }}{{i.hash_email}}'>
+                  src='{{blog_info()|get(key="avatar_proxyz") }}/{{i.hash_email}}'>
                 <div class="vh">
                   <div class="vhead"><a class="vnick" rel="nofollow" href="{{i.web_site}}"
                       target="_blank">{{i.user_name}}</a>

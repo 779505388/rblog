@@ -259,8 +259,9 @@ let loading_git = (color) => {
     return loading
 };
 
-(function () {
-    let git_user = '779505388';
+function run_git_init (git_https) {
+    let git_user=git_https.split('/').pop();
+    console.log(git_user);
     let github_container = document.getElementById('github_container');
     let github_loading = document.getElementById('github_loading');
     let git_purple = ['#ebedf0', '#fdcdec', '#fc9bd9', '#fa6ac5', '#f838b2', '#f5089f', '#c4067e', '#92055e', '#540336', '#48022f', '#30021f', ];
@@ -269,7 +270,7 @@ let loading_git = (color) => {
     let git_color = git_green;
     append_div_gitcalendar(github_container, loading_git(git_color[4]));
     github_canlendar(git_user, git_color)
-})()
+}
 
 
 //https://cdn.jsdelivr.net/gh/Colsrch/CDN/githubcalendar.js

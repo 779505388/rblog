@@ -13,14 +13,12 @@
         style=" background-image: linear-gradient( 120deg   , #89f7fe 0%, #66a6ff 100%);">
         <div class="" id="github_container"></div>
     </div>
-    <!-- Avatar & Name -->
-        <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
-            <div>
-                <strong>上传GitHbu记录</strong>
-            </div>
-        </div>
+
 </div>
 <script src="/static/js/githubcalendar.js"></script>
+<script>
+    run_git_init(`{{blog_info() | get(key="github")| safe}}`);
+</script>
 {% endif %}
 {% for article in render_data.articles %}
 <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col  fade">
@@ -45,7 +43,7 @@
         <div class="mdl-card__supporting-text meta mdl-color-text--grey-600 " id="post_entry-left-info">
             <!-- Author avatar -->
             <div id="author-avatar">
-                <img src='{{blog_info() | get(key="avatar_proxyz") }}{{blog_info() | get(key="email_hash") }}'
+                <img src='{{blog_info() | get(key="avatar_proxyz") }}/{{blog_info() | get(key="email_hash") }}'
                     width="44px" height="44px">
             </div>
             <div style="display: flex;flex-direction: column;">

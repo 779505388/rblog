@@ -520,20 +520,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "crossbeam"
-version = "0.8.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4ae5588f6b3c3cb05239e90bd110f257254aecd01e4635400391aeae07497845"
-dependencies = [
- "cfg-if 1.0.0",
- "crossbeam-channel",
- "crossbeam-deque",
- "crossbeam-epoch",
- "crossbeam-queue",
- "crossbeam-utils",
-]
-
-[[package]]
 name = "crossbeam-channel"
 version = "0.5.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -837,22 +823,6 @@ name = "fake-simd"
 version = "0.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e88a8acf291dafb59c2d96e8f59828f3838bb1a70398823ade51a84de6a6deed"
-
-[[package]]
-name = "fast_log"
-version = "1.5.4"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e0a18cb789aec6367ee78baa02b30010b0feedc6700a87aec7d2e26d2e0ef5a6"
-dependencies = [
- "chrono",
- "crossbeam",
- "crossbeam-channel",
- "crossbeam-utils",
- "log",
- "once_cell",
- "serde",
- "serde_json",
-]
 
 [[package]]
 name = "fastrand"
@@ -2570,10 +2540,8 @@ dependencies = [
  "captcha-rs",
  "chrono",
  "dotenv",
- "fast_log",
  "lazy_static",
  "libc",
- "log",
  "magic-crypt",
  "md5",
  "psutil",
