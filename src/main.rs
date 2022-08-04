@@ -11,6 +11,7 @@ use rbatis::rbatis::Rbatis;
 use rocket::catchers;
 use rocket::fs::FileServer;
 use rocket::http::Cookie;
+use rocket::launch;
 use rocket::tokio::sync::Mutex;
 use rocket::{fairing::AdHoc, routes};
 use rocket_dyn_templates::Template;
@@ -36,8 +37,9 @@ lazy_static! {
     static ref CONFIG: Arc<Mutex<Setting>> = Arc::new(Mutex::new(Setting::get_setting()));
 }
 
-#[rocket::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>> {
+
+#[launch] 
+async fn rocket() -> _ { 
     dotenv().ok();
     let database_url = env::var("DATABASE_URL").expect("set DATABASE_URL");
     //初始化连接池
@@ -135,8 +137,5 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                     cookie.add_private(Cookie::new("csrf_key", Uuid::new_v4().to_string()));
                 };
             })
-        }))
-        .launch()
-        .await?;
-    Ok(())
+        })) 
 }

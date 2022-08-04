@@ -21,9 +21,10 @@
 - [x] 博客设置
 - [x] 登陆注册
 - [x] 随机图片
+- [x] 后台管理接口API
 - [x] sitemap.xml
 - [ ] 页面缓存
 
 ## 博客图片
 
-![](https://raw.githubusercontent.com/779505388/rblog/main/example/001.png)
+![博客截图1](https://raw.githubusercontent.com/779505388/rblog/main/example/001.png)

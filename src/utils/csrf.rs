@@ -93,13 +93,13 @@ impl<'r> FromRequest<'r> for CsrfKey {
     }
 }
 
-pub  fn csrf_token(key:String)->String{
-    let mc = new_magic_crypt!(&key, 192);
-    let csrf = json!(CsrfStatus {
-        csrf: true,
-        date: Some(DateTimeUtc::now())
-    })
-    .to_string();
-    let content = mc.encrypt_str_to_base64(csrf);
-    content
-}
+// pub  fn csrf_token(key:String)->String{
+//     let mc = new_magic_crypt!(&key, 192);
+//     let csrf = json!(CsrfStatus {
+//         csrf: true,
+//         date: Some(DateTimeUtc::now())
+//     })
+//     .to_string();
+//     let content = mc.encrypt_str_to_base64(csrf);
+//     content
+// }

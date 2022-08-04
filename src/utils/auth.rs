@@ -9,6 +9,7 @@ use serde::Deserialize;
 
 #[derive(Debug, Clone, Deserialize)]
 pub struct UserAuth{
+    #[warn(dead_code)]
     permissions: String
 }
 

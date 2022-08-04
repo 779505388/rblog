@@ -5,11 +5,11 @@
 <link rel="stylesheet" href="/static/css/fontawesome.min.css">
 {% endblock css %}
 
-{% block content %}
-
 {% block title %}
 归档
 {% endblock title %}
+
+{% block content %}
 
 <div id="experience" class="background-alt" style="width: 100%;">
     <h2 class="heading">Archive</h2>

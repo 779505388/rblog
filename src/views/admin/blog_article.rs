@@ -31,8 +31,8 @@ pub async fn post_article(_user_auth: UserAuth, _csrf_token: CsrfStatus) -> Valu
     json!({ "data": list })
 }
 
-#[get("/article-modify/<id>")]
-pub async fn modify(id:usize, _user_auth: UserAuth, cookies: &CookieJar<'_>) -> Template {
+#[get("/article-modify/<_id>")]
+pub async fn modify(_id:usize, _user_auth: UserAuth, cookies: &CookieJar<'_>) -> Template {
     let mut context = HashMap::new();
     let key = match cookies.get_private("csrf_key") {
         Some(i) => i.value().to_string(),
