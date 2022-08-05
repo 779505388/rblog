@@ -17,7 +17,6 @@ pub async fn api_link_get_all(_user_auth: UserAuth, _csrf_status: CsrfStatus) ->
         Err(_) => false,
     };
     if status {
-        println!("{:#?}", &links);
         json!({ "status": "success","data": links.unwrap() })
     } else {
         json!({ "status": "error" })

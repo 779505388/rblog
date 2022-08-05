@@ -127,7 +127,6 @@ pub async fn api_article_put(
     form_data: Json<PostArticle>,
     id: usize,
 ) -> Value {
-    println!("{:#?}", &form_data);
     let data = form_data.into_inner();
     let article_data = Article {
         id: Some(id.clone()),

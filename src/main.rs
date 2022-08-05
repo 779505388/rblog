@@ -31,7 +31,6 @@ mod service;
 mod utils;
 mod views;
 
-static AVATAR: usize = 123;
 lazy_static! {
     static ref RB: Rbatis = Rbatis::new();
     static ref CONFIG: Arc<Mutex<Setting>> = Arc::new(Mutex::new(Setting::get_setting()));

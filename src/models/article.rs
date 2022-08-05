@@ -35,7 +35,6 @@ impl Article {
         let req = PageRequest::new(page as u64, num as u64);
         let wraper = RB.new_wrapper().order_by(false, &["id"]);
         let r = RB.fetch_page_by_wrapper::<Article>(wraper, &req).await;
-        println!("{:#?}", &r);
         r
     }
 

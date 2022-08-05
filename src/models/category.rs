@@ -79,7 +79,6 @@ impl CategoryArticle {
         article_id: Option<usize>,
     ) -> Result<DBExecResult, Error> {
         let category_id = Category::get_by_name(name).await.unwrap().id;
-        println!("{:#?}", article_id);
         let data = CategoryArticle {
             id: None,
             category_id,
@@ -99,7 +98,6 @@ impl CategoryArticle {
         if is_none {
             return true;
         };
-        println!("------{:#?}", &category_article);
         let category_id = category_article.unwrap().category_id.unwrap();
         let del = RB
             .remove_by_column::<CategoryArticle, _>("category_id", &category_id)

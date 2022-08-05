@@ -17,7 +17,6 @@ pub async fn api_comment_get_all(_user_auth: UserAuth, _csrf_status: CsrfStatus)
         Err(_) => false,
     };
     if status {
-        println!("{:#?}", &comments);
         json!({ "status": "success","data": comments.unwrap() })
     } else {
         json!({ "status": "error" })
@@ -43,7 +42,6 @@ pub async fn api_comment_delete(
         None => false,
     };
     if status {
-        println!("{:#?}", &data);
         let comment_status = Comment::delete_comment_list(&data.unwrap()).await;
         if comment_status{
             return json!({ "status": "success","message":"评论删除成功！"});

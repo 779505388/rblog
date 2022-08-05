@@ -17,7 +17,6 @@ pub async fn index(cookies: &CookieJar<'_>) -> HandleResponse {
         None => false,
     };
     context.insert("users", "users");
-    println!("{:#?}", &login);
     if login_status {
         return HandleResponse::Redirect(Redirect::to("/admin/dashboard"));
     } else {

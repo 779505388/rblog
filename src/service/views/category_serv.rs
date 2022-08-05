@@ -20,7 +20,6 @@ impl CategoryPageData {
     pub async fn service_category(name: &str, page: usize) -> CategoryPageData {
         let category_result = Category::get_by_name(name).await;
         let categorys = Category::get_all().await;
-        println!("{:#?}",&category_result);
         let is_error = match category_result {
             Ok(_) => false,
             Err(_) => true,

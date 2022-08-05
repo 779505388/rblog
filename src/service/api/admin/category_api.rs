@@ -30,7 +30,6 @@ pub async fn api_category_post(
     _csrf_status: CsrfStatus,
     form_data: Json<CategoryData>,
 ) -> Value {
-    println!("{:#?}", &form_data);
     let data = form_data.into_inner().category;
     let status = match data {
         Some(_) => true,
@@ -54,7 +53,6 @@ pub async fn api_category_delete(
     _csrf_status: CsrfStatus,
     form_data: Json<CategoryData>,
 ) -> Value {
-    println!("{:#?}", &form_data);
     let data = form_data.into_inner().category;
     let status = match data {
         Some(_) => true,
@@ -91,7 +89,6 @@ pub async fn api_category_put(
     _csrf_status: CsrfStatus,
     form_data: Json<CategoryData>,
 ) -> Value {
-    println!("{:#?}", &form_data);
     let data = form_data.clone().into_inner().category;
     let category_id = form_data.into_inner().id;
     let status = match data {

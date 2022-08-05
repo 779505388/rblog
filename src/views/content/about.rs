@@ -6,6 +6,5 @@ use std::collections::HashMap;
 pub async fn index() -> Template {
     let mut context = HashMap::new();
     context.insert("render_data", "render_data");
-    println!("{:#?}", &context);
     Template::render("content/about", context)
 }

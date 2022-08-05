@@ -78,7 +78,6 @@ impl Comments {
             Ok(_)=>false,
             Err(_)=>true,};
         if is_null{
-            println!("null--{}",article_id);
             return Some(vec_comment);
         };
         for item in parent_commemts.unwrap(){

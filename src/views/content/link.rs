@@ -7,7 +7,6 @@ pub async fn index() -> Template {
     let render_data = LinkPageData::service_link().await;
     let mut context = HashMap::new();
     context.insert("render_data", render_data);
-    println!("{:#?}", &context);
     let template = Template::render("content/link", &context);
     template
 }

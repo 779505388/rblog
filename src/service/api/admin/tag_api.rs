@@ -19,7 +19,6 @@ pub async fn api_tag_get_all(_user_auth: UserAuth, _csrf_status: CsrfStatus) -> 
         Err(_) => false,
     };
     if status {
-        println!("{:#?}", &tags);
         json!({ "status": "success","data": tags.unwrap() })
     } else {
         json!({ "status": "error" })
@@ -40,7 +39,6 @@ pub async fn api_tag_put(
     _csrf_status: CsrfStatus,
     form_data: Json<TagForm>,
 ) -> Value {
-    println!("{:#?}",&form_data);
     let data = form_data.into_inner();
     let tag_data = Tag {
         id: data.id,
@@ -61,7 +59,6 @@ pub async fn api_tag_delete(
     _csrf_status: CsrfStatus,
     form_data: Json<TagForm>,
 ) -> Value {
-    println!("{:#?}",&form_data);
     let data = form_data.into_inner();
     let tag_data = Tag {
         id: data.id,
