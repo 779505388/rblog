@@ -32,7 +32,6 @@
     font-size: 1pc;
     font-weight: 400;
     box-sizing: border-box;
-    background-color: #eee;
     padding: 1pc;
 }
 .chip{
@@ -429,4 +428,15 @@
 }
 .vmeta > .vtime{
     color: rgb(146, 146, 146);
+}
+
+#statement{
+    box-sizing: border-box;
+    color: #777;
+    margin-bottom: 0 !important;
+    margin: 2em;
+    padding: 0.5em 1em;
+    border-left: 3px solid #5b9aff;
+    background-color: #F5F5F5;
+    list-style: none;
 }

@@ -36,7 +36,7 @@
     </div>
     <div id="post_entry-right-info">
       <span class="post_entry-category" id="read-time" style="color: #6a6a6a">
-        
+
       </span>
     </div>
 
@@ -44,6 +44,12 @@
   <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade">
     {{ render_data.article.template | safe}}
   </div>
+  <blockquote id="statement">
+    <strong>最后修改：</strong><span class="modified"> {{ render_data.article.modified}}</span>
+    <br><br>
+    <strong>版权声明：</strong>署名-非商业性使用-相同方式共享 4.0 国际 <a target="_blank"
+      href="//creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">(CC BY-NC-SA 4.0)</a>
+  </blockquote>
   <div id="tag-content">
 
     {% for tag in render_data.tags %}
@@ -52,6 +58,7 @@
     </div>
     {% endfor %}
   </div>
+  <div class="divider" style="height:2px ;background-color: rgba(0, 0, 0, 0.12);"></div>
   <div class="comment-container mdui-card" style="padding:10px;margin-top: 20px;">
     <p id="review-btn" style="font-weight: 600;cursor: pointer;"><i class="material-icons">comment</i> 评论</p>
     <div id="valine_container" class="valine_thread v" data-class="v">
@@ -202,6 +209,19 @@
   Prism.highlightAll()
 </script>
 <script>
+  $(".modified").each(
+    //时间本地化--修改时间
+    function () {
+      console.log($(this).html());
+      let time = $(this).html();
+      moment.locale();
+      let dateTime = moment(time).format('YYYY年MM月DD日 H时HH分');
+      console.log(dateTime);
+      $(this).text(dateTime);
+    }
+  );
+</script>
+<script>
   $('.vat').click(function () {
     let comment = ($(this).parent().parent().children('.vreply-wrapper')[0]);
     $(comment).append($('.vwrap')[0])
@@ -341,7 +361,7 @@
     $('input[name="link"]').val(localStorage.getItem("link"));
     $('input[name="parent_id"]').val(null);
     $('input[name="captcha"]').val(null);
-    var readLengthPerMinute = 400; 
+    var readLengthPerMinute = 400;
     var textLength = $('#post-content').text().length; //获取文章长度
     var readTime;
     if (textLength <= readLengthPerMinute) {
@@ -349,7 +369,7 @@
     } else {
       readTime = Math.round(textLength / readLengthPerMinute);
     };
-    $("#read-time").html("阅读时间: "+readTime+" min");
+    $("#read-time").html("阅读时间: " + readTime + " min");
   });
 </script>
 {% endblock js %}
