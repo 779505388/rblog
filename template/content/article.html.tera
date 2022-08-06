@@ -3,6 +3,7 @@
 {% block css %}
 <link rel="stylesheet" href="/static/css/article.css">
 <link rel="stylesheet" href="/static/css/snackbar.min.css">
+<link rel="stylesheet" href="/static/css/editormd.min.css">
 <link rel="stylesheet" href="/static/css/GrayMac.min.css">
 {% endblock css %}
 
@@ -42,7 +43,8 @@
 
   </div>
   <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade">
-    {{ render_data.article.template | safe}}
+    <div id="editormd-preview-container">{{ render_data.article.template | safe}}</div>
+    
   </div>
   <blockquote id="statement">
     <strong>最后修改：</strong><span class="modified"> {{ render_data.article.modified}}</span>
@@ -371,5 +373,29 @@
     };
     $("#read-time").html("阅读时间: " + readTime + " min");
   });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.3/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.4/underscore.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-sequence-diagrams/1.0.6/sequence-diagram-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.17.1/flowchart.min.js"> </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
+{# <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.3.0/katex.min.js"></script> #}
+<script src="/static/js/md/jquery.flowchart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/editor-md/1.5.0/editormd.min.js"></script>
+<script>
+  $(document).ready(() => {
+    var Editor = editormd.markdownToHTML("editormd-preview-container", {
+      tocm: true, // Using [TOCM]
+      tex: false, // 开启科学公式TeX语言支持，默认关闭
+      flowChart: true, // 开启流程图支持，默认关闭
+      sequenceDiagram: true,
+      previewCodeHighlight: false,
+      htmlDecode: "style,script,iframe",
+      taskList: true,
+    })
+
+  });
+ 
 </script>
 {% endblock js %}
