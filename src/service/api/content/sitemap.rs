@@ -25,7 +25,7 @@ pub async fn api_sitemap_get() -> (ContentType,String) {
         let text = format!(
             r#"
         <url>
-        <loc>{}/{}</loc>
+        <loc>{}/article/{}</loc>
         <lastmod>{}</lastmod>
         <changefreq>weekly</changefreq>
       <priority>0.8</priority>

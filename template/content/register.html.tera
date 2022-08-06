@@ -55,7 +55,7 @@
                                     class="text-decoration-none" href="/login">登陆</a></p>
                             <p style="text-align: center;" class="grey--text text--darken-2"> &copy; <a
                                     class="text-decoration-none"
-                                    href="https://github.com/779505388/Fly-blog">Fly-Blog</a></p>
+                                    href="https://github.com/779505388/rblog">rblog</a></p>
                         </v-card>
                     </div>
                 </div>

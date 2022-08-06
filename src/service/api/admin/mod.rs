@@ -5,3 +5,4 @@ pub mod link_api;
 pub mod tag_api;
 pub mod about_api;
 pub mod setting_api;
+pub mod log_api;

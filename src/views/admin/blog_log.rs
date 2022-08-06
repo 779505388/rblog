@@ -1,15 +1,12 @@
-use crate::utils::{
-        auth::UserAuth,
-        csrf::CsrfStatus,
-    };
-use rocket::http::CookieJar;
+use crate::utils::{auth::UserAuth, csrf::CsrfStatus};
 use rocket::get;
+use rocket::http::CookieJar;
 use rocket_dyn_templates::Template;
 use std::collections::HashMap;
 
-//博客设置
-#[get("/setting")]
-pub async fn index( _user_auth: UserAuth, cookies: &CookieJar<'_>) -> Template {
+//查看错误日志
+#[get("/log")]
+pub async fn index(_user_auth: UserAuth, cookies: &CookieJar<'_>) -> Template {
     let mut context = HashMap::new();
     let key = match cookies.get_private("csrf_key") {
         Some(i) => i.value().to_string(),
@@ -17,6 +14,6 @@ pub async fn index( _user_auth: UserAuth, cookies: &CookieJar<'_>) -> Template {
     };
     let csrf_token = CsrfStatus::encrypt_csrf(key).await;
     context.insert("csrf_token", csrf_token);
-    let template = Template::render("admin/blog-set", &context);
+    let template = Template::render("admin/blog-log", &context);
     template
 }

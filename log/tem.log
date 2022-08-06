@@ -1,0 +1,1 @@
+2022-08-06 12:34:15.676798000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398333284389621760] ReturnErr  <== invalid type: unit value, expected struct Article

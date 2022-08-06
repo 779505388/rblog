@@ -1,4 +1,4 @@
-{% extends 'layout.html' %}
+{% extends 'admin/layout' %}
 {% block css %}
 
 {% endblock css %}
@@ -8,17 +8,20 @@
 {% endblock title %}
 
 {% block content %}
-<v-card class="mx-auto pa-3"  max-width='900'style="margin-top: 50px;">
+<v-card class="mx-auto pa-3" max-width='900' style="margin-top: 50px;">
   <div class="text-start v-card--material__heading mb-n6 v-sheet theme--dark elevation-6 yellow darken-2
-  pa-7"
-    style="width: 100%;top: -40px;position: relative;">
+  pa-7" style="width: 100%;top: -40px;position: relative;">
     <div class="display-2 font-weight-light"> 博客日志 </div>
     <div class="subtitle-1 font-weight-light"> Blog log </div>
     <!---->
   </div>
-  <v-data-table min-height='500' :headers="headers" :items="logs" :items-per-page="10" class="elevation-1"></v-data-table>
+  <v-data-table min-height='500' :headers="headers" :items="logs" :items-per-page="10" class="elevation-1">
+  </v-data-table>
   <v-btn color="primary" @click='deleteLog' block>清除日志</v-btn>
 </v-card>
+<v-snackbar top right :color='snackbarColor' v-model="snackbar" :timeout="timeout">
+  {[snackbarText ]}
+</v-snackbar>
 {% endblock content %}
 
 {% block js %}
@@ -30,21 +33,25 @@
     el: '#app',
     vuetify: new Vuetify(),
     data: () => ({
-      csrftoken: "{{csrf_token()}}",
+      csrftoken: "{{csrf_token | safe}}",
       drawer: false,
       logs: [],
       headers: [{
         text: '日志内容',
         align: 'start',
         value: 'value',
-      }, ]
+      }, ],
+      snackbar: false,
+      snackbarText: '',
+      timeout: 1700,
+      snackbarColor: ''
     }),
 
     computed: {
 
     },
     mounted() {
-      this.getLog()
+      this.getLog();
     },
     watch: {
 
@@ -56,28 +63,33 @@
 
     methods: {
       getLog() {
-        axios.post('{{url_for("admin.blog_log")}}', {}, {
+        axios.get('/api/admin/log', {
           headers: {
             'X-CSRFToken': this.csrftoken,
           },
         }).then(res => {
+          let data = [];
           for (let i of res.data.data) {
-            this.logs.push({
+            data.push({
               value: i
             })
-          }
+          };
+          this.logs = data;
         });
       },
-      deleteLog(){
+      deleteLog() {
         var flag = confirm('确定清除日志？')
         if (flag) {
-          axios.delete('{{url_for("admin.blog_log")}}', {
+          axios.delete('/api/admin/log', {
             headers: {
               'X-CSRFToken': this.csrftoken,
             },
           }).then(res => {
-            console.log(res.data);
-            this.logs = []
+            this.snackbar = true;
+            this.snackbarColor = res.data.status;
+            this.snackbarText = res.data.message;
+            // console.log(res.data);
+            this.getLog();
           });
         }
       }

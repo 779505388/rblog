@@ -4,10 +4,11 @@
 
 ## 部署程序
 
-1. 修改.env 配置数据库地址。
-2. 配置 Rocket.toml、Blog.toml文件。
-3. 运行migrations下sql文件，生成表。
-4. cargo run --release 生成文件，并移动到文件根目录。
+1. 修改 .env 配置数据库地址。
+2. 配置 Rocket.toml、Blog.toml 文件。
+3. 删除 Cargo.toml 中 rbatis 的 debug_mode。
+4. 运行 migrations 下 sql 文件，生成表。
+5. cargo run --release 生成文件，并移动到文件根目录。
 
 ## 实现功能
 

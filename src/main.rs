@@ -1,12 +1,14 @@
 #[macro_use]
 extern crate lazy_static;
 
-use std::sync::Arc;
 use std::env;
+use std::sync::Arc;
 
-use crate::service::api::admin::{article_api, category_api, comment_api,
-    link_api,tag_api,about_api,setting_api};
-use crate::service::api::content::{random_img,sitemap};
+use crate::service::api::admin::{
+    about_api, article_api, category_api, comment_api, link_api, setting_api,
+     tag_api,log_api,
+};
+use crate::service::api::content::{random_img, sitemap};
 use rbatis::rbatis::Rbatis;
 use rocket::catchers;
 use rocket::fs::FileServer;
@@ -15,17 +17,20 @@ use rocket::launch;
 use rocket::tokio::sync::Mutex;
 use rocket::{fairing::AdHoc, routes};
 use rocket_dyn_templates::Template;
+use simple_log::LogConfigBuilder;
 use uuid::Uuid;
-use views::admin::{blog_article, blog_category, blog_comment, blog_dashboard,
-    blog_link,blog_tag,blog_about,blog_setting};
+use views::admin::{
+    blog_about, blog_article, blog_category, blog_comment, blog_dashboard, blog_link, blog_setting,
+    blog_tag,blog_log,
+};
 use views::content::{
     about, archive, article, captcha, category, comment, home, link, login, register, tag,
 };
 use views::error;
 // use fast_log;
+use crate::utils::config::Setting;
 use dotenv::dotenv;
 use utils::info;
-use crate::utils::config::Setting;
 mod models;
 mod service;
 mod utils;
@@ -36,13 +41,21 @@ lazy_static! {
     static ref CONFIG: Arc<Mutex<Setting>> = Arc::new(Mutex::new(Setting::get_setting()));
 }
 
-
-#[launch] 
-async fn rocket() -> _ { 
+#[launch]
+async fn rocket() -> _ {
     dotenv().ok();
     let database_url = env::var("DATABASE_URL").expect("set DATABASE_URL");
     //初始化连接池
     RB.link(&database_url).await.unwrap();
+    let config = LogConfigBuilder::builder()
+        .path("./log/tem.log")
+        .size(1 * 100)
+        .roll_count(10)
+        .time_format("%Y-%m-%d %H:%M:%S.%f") //E.g:%H:%M:%S.%f
+        .level("warn")
+        .output_file()
+        .build();
+    simple_log::new(config).unwrap();
     let rb = Arc::new(&RB);
     rocket::build()
         .mount(
@@ -81,6 +94,7 @@ async fn rocket() -> _ {
                 blog_tag::index,
                 blog_about::index,
                 blog_setting::index,
+                blog_log::index,
             ],
         )
         .mount("/static", FileServer::from("./static"))
@@ -108,14 +122,14 @@ async fn rocket() -> _ {
                 about_api::api_about_post,
                 setting_api::api_setting_get,
                 setting_api::api_setting_post_info,
-                setting_api::api_setting_post_user
+                setting_api::api_setting_post_user,
+                log_api::api_log_get,
+                log_api::api_log_delete,
             ],
         )
         .mount(
             "/api/content",
-            routes![random_img::api_random_img,
-            sitemap::api_sitemap_get
-            ]
+            routes![random_img::api_random_img, sitemap::api_sitemap_get],
         )
         .register("/", catchers![error::not_found])
         .register("/", catchers![error::server_error])
@@ -136,5 +150,5 @@ async fn rocket() -> _ {
                     cookie.add_private(Cookie::new("csrf_key", Uuid::new_v4().to_string()));
                 };
             })
-        })) 
+        }))
 }

@@ -6,3 +6,4 @@ pub mod blog_link;
 pub mod blog_tag;
 pub mod blog_setting;
 pub mod blog_about;
+pub mod blog_log;
