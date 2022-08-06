@@ -9,3 +9,4 @@ pub mod archive;
 pub mod  captcha;
 pub mod comment;
 pub mod about;
+pub mod sitemap;

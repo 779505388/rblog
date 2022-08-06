@@ -8,7 +8,7 @@ use crate::service::api::admin::{
     about_api, article_api, category_api, comment_api, link_api, setting_api,
      tag_api,log_api,
 };
-use crate::service::api::content::{random_img, sitemap};
+use crate::service::api::content::random_img;
 use rbatis::rbatis::Rbatis;
 use rocket::catchers;
 use rocket::fs::FileServer;
@@ -24,7 +24,8 @@ use views::admin::{
     blog_tag,blog_log,
 };
 use views::content::{
-    about, archive, article, captcha, category, comment, home, link, login, register, tag,
+    about, archive, article, captcha, category, comment, home, link, login, 
+    register, tag,sitemap,
 };
 use views::error;
 // use fast_log;
@@ -76,6 +77,7 @@ async fn rocket() -> _ {
                 captcha::index,
                 comment::index,
                 about::index,
+                sitemap::api_sitemap_get,
             ],
         )
         .mount(
@@ -129,7 +131,7 @@ async fn rocket() -> _ {
         )
         .mount(
             "/api/content",
-            routes![random_img::api_random_img, sitemap::api_sitemap_get],
+            routes![random_img::api_random_img,],
         )
         .register("/", catchers![error::not_found])
         .register("/", catchers![error::server_error])
