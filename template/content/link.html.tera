@@ -33,7 +33,5 @@
     </div>
     {% endfor %}
     {% endif %}
-
-    {{DD}}
 </div>
 {% endblock content %}
