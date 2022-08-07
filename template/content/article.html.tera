@@ -6,7 +6,8 @@
 <link rel="stylesheet" href="/static/css/editormd.min.css">
 <link rel="stylesheet" href="/static/css/GrayMac.min.css">
 <link href="https://cdn.bootcdn.net/ajax/libs/prism-themes/1.9.0/prism-material-dark.min.css" rel="stylesheet">
-
+<meta Keywords='{% for tag in render_data.tags %}{{tag.name}}{% endfor %}'></meta>
+<meta Description="{{render_data.article.url_en}}"></meta>
 {% endblock css %}
 
 {% block title %}

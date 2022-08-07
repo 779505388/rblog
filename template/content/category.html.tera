@@ -29,7 +29,7 @@
         <div class="mdl-card__supporting-text meta mdl-color-text--grey-600 " id="post_entry-left-info">
             <!-- Author avatar -->
             <div id="author-avatar">
-                <img src='{{blog_info() | get(key="avatar_proxyz") }}{{blog_info() | get(key="email_hash") }}' width="44px" height="44px">
+                <img src='{{blog_info() | get(key="avatar_proxyz") }}/{{blog_info() | get(key="email_hash") }}' width="44px" height="44px">
             </div>
             <div style="display: flex;flex-direction: column;">
                 <span class="author-name-span"><strong>{{blog_info()|get(key="nick_name") }}</strong></span>
