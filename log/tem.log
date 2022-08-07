@@ -139,3 +139,98 @@
 2022-08-06 23:07:46.271836000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398492712392855552] ReturnErr  <== invalid type: unit value, expected struct Article
 2022-08-06 23:08:28.838760000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398492890919211008] ReturnErr  <== invalid type: unit value, expected struct Article
 2022-08-06 23:08:55.715548000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398493003657908224] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-06 23:12:19.607172000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398493858842939392] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 09:40:09.616898000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398651858303979520] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 09:40:16.096956000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398651885495652352] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 09:40:31.710978000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398651950985515008] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 09:41:40.552021000 [ERROR] <rocket::server:294>:No matching routes for [32mGET[0m [34m/favicon.ico[0m [33mimage[0m[33m/[0m[33mavif[0m.
+2022-08-07 09:41:40.555380000 [WARN] <rocket::server:319>:Responding with registered [36m([0m[37mnot_found[0m[36m)[0m [34m404[0m catcher.
+2022-08-07 09:42:28.794299000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398652442067210240] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 09:43:18.492519000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398652650515730433] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 09:43:35.763539000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398652722955554817] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 09:43:54.043418000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398652799627431937] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 09:45:30.771997000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398653205338263552] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 09:45:43.909076000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398653260438835200] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 09:47:52.135406000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398653798257659905] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 09:48:09.131411000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398653869544050689] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 09:48:23.022560000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398653927811321856] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 09:49:14.731656000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398654144694587392] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 09:49:45.849877000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398654275212939264] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 09:50:39.149099000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398654498765148160] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 09:50:59.933472000 [ERROR] <rocket_dyn_templates::tera_templates:25>:Failed to initialize Tera templating.
+2022-08-07 09:50:59.934040000 [WARN] <rocket_dyn_templates::context::manager:178>:An error occurred while reloading templates.
+2022-08-07 09:50:59.934106000 [WARN] <rocket_dyn_templates::context::manager:179>:Existing templates will remain active.
+2022-08-07 09:50:59.938385000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398654585960534017] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 09:51:01.962569000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398654594445611008] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 09:52:29.105730000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398654959958233088] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 09:52:46.459856000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398655032746184704] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 09:53:35.543502000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398655238619402240] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 09:54:31.101296000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398655471642349568] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 09:56:11.210396000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398655891529928704] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 09:58:54.436921000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398656576153587712] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 09:59:38.422144000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398656760640049152] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 10:40:52.642526000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398667138266697728] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 10:40:58.533403000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398667162979536896] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 10:42:35.725808000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398667570636525568] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 10:42:36.071334000 [WARN] <rocket::response::responder:438>:Response was `None`.
+2022-08-07 10:42:36.071426000 [ERROR] <rocket::server:294>:No matching routes for [32mGET[0m [34m/static/js/components/prism-markup.min.js[0m.
+2022-08-07 10:42:36.073406000 [WARN] <rocket::server:319>:Responding with registered [36m([0m[37mnot_found[0m[36m)[0m [34m404[0m catcher.
+2022-08-07 10:43:00.039149000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398667672612638720] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 10:43:00.349325000 [WARN] <rocket::response::responder:438>:Response was `None`.
+2022-08-07 10:43:00.349389000 [ERROR] <rocket::server:294>:No matching routes for [32mGET[0m [34m/static/js/components/prism-markup.min.js[0m.
+2022-08-07 10:43:00.349497000 [WARN] <rocket::server:319>:Responding with registered [36m([0m[37mnot_found[0m[36m)[0m [34m404[0m catcher.
+2022-08-07 10:44:04.241751000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398667941895344129] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 10:44:04.588348000 [WARN] <rocket::response::responder:438>:Response was `None`.
+2022-08-07 10:44:04.588441000 [ERROR] <rocket::server:294>:No matching routes for [32mGET[0m [34m/static/js/components/prism-markup.min.js[0m.
+2022-08-07 10:44:04.588586000 [WARN] <rocket::server:319>:Responding with registered [36m([0m[37mnot_found[0m[36m)[0m [34m404[0m catcher.
+2022-08-07 10:45:20.081796000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398668259991359488] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 10:45:20.769594000 [WARN] <rocket::response::responder:438>:Response was `None`.
+2022-08-07 10:45:20.769747000 [ERROR] <rocket::server:294>:No matching routes for [32mGET[0m [34m/static/js/components/prism-markup.min.js[0m.
+2022-08-07 10:45:20.769899000 [WARN] <rocket::server:319>:Responding with registered [36m([0m[37mnot_found[0m[36m)[0m [34m404[0m catcher.
+2022-08-07 10:45:50.408463000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398668387179433984] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 10:46:30.756315000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398668556423794689] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 10:49:51.750156000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398669399449538560] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 10:50:27.015799000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398669547365863425] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 10:57:14.375695000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398671255957540864] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 10:57:19.094392000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398671275750461440] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:06:06.018535000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398673485829902337] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:06:38.273938000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398673621121372160] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:07:18.004644000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398673787761070081] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:09:34.941628000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398674362120671232] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:10:28.293578000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398674585890983936] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:12:18.982525000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398675050154299392] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:16:03.963118000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398675993793007616] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:16:31.278793000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398676108364615680] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:16:31.448248000 [WARN] <rocket::response::responder:438>:Response was `None`.
+2022-08-07 11:16:31.448334000 [ERROR] <rocket::server:294>:No matching routes for [32mGET[0m [34m/static/css/editormd.1.css[0m [33mtext[0m[33m/[0m[33mcss[0m.
+2022-08-07 11:16:31.453174000 [WARN] <rocket::server:319>:Responding with registered [36m([0m[37mnot_found[0m[36m)[0m [34m404[0m catcher.
+2022-08-07 11:16:59.574127000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398676227042447360] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:17:34.772105000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398676374669365248] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:17:55.708049000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398676462485508096] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:18:17.143468000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398676552386220032] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:18:37.820060000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398676639116038144] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:18:38.164958000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398676640558878721] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:18:41.350916000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398676653917736960] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:18:47.973005000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398676681700806656] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:19:58.975232000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398676979504779264] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:20:00.431976000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398676985615880192] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:22:43.074571000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398677667790065664] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:22:48.322424000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398677689797578753] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:23:33.244175000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398677878214103040] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:24:41.425580000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398678164185944065] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:29:02.338991000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398679258538577920] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:29:03.185320000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398679262086959104] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:29:30.466753000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398679376515960832] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:30:04.083415000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398679517511684096] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:30:48.483662000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398679703738781696] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:37:15.234453000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398681325890048000] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:38:14.525800000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398681574578720768] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:39:49.787525000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398681974132314113] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:40:52.346092000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398682236519583744] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:41:30.810173000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398682397853487104] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:42:30.366046000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398682647649456128] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:43:13.965232000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398682830516916224] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:43:37.114804000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398682927610859521] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:44:25.831016000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398683131944767488] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:45:33.536731000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398683415924314112] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-07 11:46:04.957768000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [398683547713540096] ReturnErr  <== invalid type: unit value, expected struct Article

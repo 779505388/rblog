@@ -387,6 +387,7 @@ a {
     line-height: 19px;
     overflow: auto;
     border-radius: 3px;
+    font-size: 15px;
 }
 #post-content .gutter,
 #post-content .code {

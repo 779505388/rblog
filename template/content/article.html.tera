@@ -5,6 +5,8 @@
 <link rel="stylesheet" href="/static/css/snackbar.min.css">
 <link rel="stylesheet" href="/static/css/editormd.min.css">
 <link rel="stylesheet" href="/static/css/GrayMac.min.css">
+<link href="https://cdn.bootcdn.net/ajax/libs/prism-themes/1.9.0/prism-material-dark.min.css" rel="stylesheet">
+
 {% endblock css %}
 
 {% block title %}
@@ -44,7 +46,6 @@
   </div>
   <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade">
     <div id="editormd-preview-container">{{ render_data.article.template | safe}}</div>
-    
   </div>
   <blockquote id="statement">
     <strong>最后修改：</strong><span class="modified"> {{ render_data.article.modified}}</span>
@@ -207,9 +208,8 @@
 {% block js %}
 <script src="/static/js/snackbar.min.js"></script>
 <script src="/static/js/prism.min.js"></script>
-<script>
-  Prism.highlightAll()
-</script>
+<script src="/static/js/prism/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/plugins/autoloader/prism-autoloader.min.js"></script>
 <script>
   $(".modified").each(
     //时间本地化--修改时间
@@ -383,6 +383,7 @@
 {# <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.3.0/katex.min.js"></script> #}
 <script src="/static/js/md/jquery.flowchart.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/editor-md/1.5.0/editormd.min.js"></script>
+
 <script>
   $(document).ready(() => {
     var Editor = editormd.markdownToHTML("editormd-preview-container", {
@@ -396,6 +397,5 @@
     })
 
   });
- 
 </script>
 {% endblock js %}
