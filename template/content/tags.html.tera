@@ -10,9 +10,9 @@
 
 {% block content %}
 <div class="">
-    {% if render_data %}
+    {% if render_data.tags %}
 
-    {% for i in render_data %}
+    {% for i in render_data.tags %}
     <a href="/tag/{{i.name}}" class="tag">
         {{i.name}}
     </a>

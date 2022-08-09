@@ -1,12 +1,26 @@
+use crate::models::category::Category;
+use crate::models::tag::Tag;
 use crate::service::views::tag_serv::{TagListData, TagPageData};
 use crate::utils::response::HandleResponse;
 use rocket::{get, http::Status};
 use rocket_dyn_templates::Template;
+use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+struct TagData{
+    pub tags:Option<Vec<Tag>>,
+    pub categorys:Option<Vec<Category>>
+}
 
 #[get("/tag")]
 pub async fn index_list() -> Template {
-    let render_data = TagListData::get_all().await;
+    let categorys=Category::get_all().await;
+    let tags = TagListData::get_all().await;
+    let render_data= TagData{
+        tags:Some(tags),
+        categorys,
+    };
     let mut context = HashMap::new();
     context.insert("render_data", render_data);
     Template::render("content/tags", context)
