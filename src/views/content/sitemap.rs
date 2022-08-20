@@ -7,7 +7,7 @@ use crate::{models::article::Article, CONFIG};
 
 //生成站点地图
 #[get("/sitemap.xml")]
-pub async fn api_sitemap_get() -> (ContentType,String) {
+pub async fn index() -> (ContentType,String) {
     let articles = Article::get_all().await;
     let domain = CONFIG
         .try_lock()

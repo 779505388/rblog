@@ -77,7 +77,7 @@ async fn rocket() -> _ {
                 captcha::index,
                 comment::index,
                 about::index,
-                sitemap::api_sitemap_get,
+                sitemap::index,
             ],
         )
         .mount(
