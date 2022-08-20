@@ -1,7 +1,7 @@
 {% extends "content/base" %}
 
 {% block css %}
-<meta name='description' content="博客内容页面"></meta>
+<meta name='description' content="博客内容页面,地质技术,计算机技术,编程语言,技术分享"></meta>
 {% endblock css %}
 
 {% block title %}
@@ -11,7 +11,7 @@
 {% endblock title %}
 
 {% block content %}
-<h1 style="display: none;">博客内容页面</h1>
+<h1 style="display: none;">博客内容页面,地质技术,计算机技术,编程语言,技术分享</h1>
 {% if render_data.page==1 %}
 <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col md-github fade">
     <div class="mdl-card__media mdl-color-text--grey-50 "

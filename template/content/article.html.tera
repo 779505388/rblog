@@ -15,6 +15,7 @@
 {% endblock title %}
 
 {% block content %}
+<h1 style="display: none;">{{render_data.article.url_en}}</h1>
 <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col ">
 
   <!-- Article link & title -->

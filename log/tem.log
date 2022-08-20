@@ -7,3 +7,5 @@
 2022-08-20 10:53:09.697407000 [WARN] <rocket::server:426>:Received SIGINT. Requesting shutdown.
 2022-08-20 10:58:14.073759000 [WARN] <rocket::server:426>:Received SIGINT. Requesting shutdown.
 2022-08-20 11:05:20.224898000 [WARN] <rocket::server:426>:Received SIGINT. Requesting shutdown.
+2022-08-20 11:13:55.538111000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [403386497392316416] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-20 11:47:16.919562000 [WARN] <rocket::server:426>:Received SIGINT. Requesting shutdown.
