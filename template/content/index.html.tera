@@ -11,6 +11,7 @@
 {% endblock title %}
 
 {% block content %}
+<h1 style="display: none;">博客内容页面</h1>
 {% if render_data.page==1 %}
 <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col md-github fade">
     <div class="mdl-card__media mdl-color-text--grey-50 "

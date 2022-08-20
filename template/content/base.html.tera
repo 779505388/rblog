@@ -86,7 +86,7 @@
                         <!-- Sidebar brand image -->
                         <div class="sidebar-image">
                             <a href="/login"><img
-                                    src='{{blog_info() | get(key="avatar_proxyz") }}/{{blog_info() | get(key="email_hash") }}'></a>
+                                  alt="头像"  src='{{blog_info() | get(key="avatar_proxyz") }}/{{blog_info() | get(key="email_hash") }}'></a>
                         </div>
 
                     </div>
@@ -232,7 +232,7 @@
             <div id="copyright">Copyleft (ɔ)
                 2022 {{blog_info() | get(key="nick_name") }} <br><a href="" rel="nofollow" style="color: #9e9e9e"
                     target="_blank">RUST</a> &amp;
-                <a href="https://rocket.rs/">Rocket <img></a> | <a href="/sitemap.xml">SiteMap</a>
+                <a href="https://rocket.rs/">Rocket </a> | <a href="/sitemap.xml">SiteMap</a>
             </div>
             <script>
                 console.log("\n %c 仿 | https://github.com/idawnlight/typecho-theme-material %c \n",
