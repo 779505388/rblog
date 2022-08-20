@@ -33,7 +33,7 @@ pub async fn api_sitemap_get() -> (ContentType,String) {
         "#,
             &domain,
             item.url_en.unwrap(),
-            item.modified.unwrap()
+            item.modified.unwrap().format("%Y-%m-%d %H:%M:%S"),
         );
         sitemap += &text;
     }
