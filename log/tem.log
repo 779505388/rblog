@@ -1,0 +1,6 @@
+2022-08-20 10:22:58.748220000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [403373676273209344] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-20 10:23:00.883580000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [403373685240631296] ReturnErr  <== invalid type: unit value, expected struct Article
+2022-08-20 10:23:05.038715000 [ERROR] <rocket::server:294>:No matching routes for [32mGET[0m [34m/favicon.ico[0m [33mimage[0m[33m/[0m[33mavif[0m.
+2022-08-20 10:23:05.041074000 [WARN] <rocket::server:319>:Responding with registered [36m([0m[37mnot_found[0m[36m)[0m [34m404[0m catcher.
+2022-08-20 10:30:50.632369000 [WARN] <rocket::server:426>:Received SIGINT. Requesting shutdown.
+2022-08-20 10:31:47.808872000 [ERROR] <rbatis::plugin::log:43>:[rbatis] [403375895324266496] ReturnErr  <== invalid type: unit value, expected struct Article

@@ -6,8 +6,8 @@
 <link rel="stylesheet" href="/static/css/editormd.min.css">
 <link rel="stylesheet" href="/static/css/GrayMac.min.css">
 <link href="https://cdn.bootcdn.net/ajax/libs/prism-themes/1.9.0/prism-material-dark.min.css" rel="stylesheet">
-<meta Keywords='{% for tag in render_data.tags %}{{tag.name}},{% endfor %}'></meta>
-<meta Description="{{render_data.article.url_en}}"></meta>
+<meta name="keywords" content='{% for tag in render_data.tags %}{{tag.name}},{% endfor %}'></meta>
+<meta name='description' content="{{render_data.article.url_en}}"></meta>
 {% endblock css %}
 
 {% block title %}
@@ -31,7 +31,7 @@
       <!-- Author avatar -->
       <div id="author-avatar">
         <img src='{{blog_info() | get(key="avatar_proxyz") }}/{{blog_info()|get(key="email_hash")}}' width="44px"
-          height="44px">
+          height="44px" alt="头像">
       </div>
       <div style="display: flex;flex-direction: column;">
         <span class="author-name-span"><strong>{{blog_info() | get(key="nick_name") }}</strong></span>
@@ -108,7 +108,7 @@
       <div class="vcards">
         {% for comment in render_data.comments %}
         <div class="vcard" ">
-          <img class=" vimg" src='{{blog_info() | get(key="avatar_proxyz") }}/{{comment.comment.hash_email}}'>
+          <img class=" vimg"  alt="头像" src='{{blog_info() | get(key="avatar_proxyz") }}/{{comment.comment.hash_email}}'>
           <div class="vh">
             <div class="vhead">
               <a class="vnick" id="{{comment.comment.uuid}}" rel="nofollow" href="{{comment.comment.web_site}}"
@@ -130,7 +130,7 @@
             <div class="vquote">
               {% for i in comment.child_comments %}
               <div class="vcard" id="{{i.uuid}}"><img class="vimg"
-                  src='{{blog_info()|get(key="avatar_proxyz") }}/{{i.hash_email}}'>
+                alt="头像" src='{{blog_info()|get(key="avatar_proxyz") }}/{{i.hash_email}}'>
                 <div class="vh">
                   <div class="vhead"><a class="vnick" rel="nofollow" href="{{i.web_site}}"
                       target="_blank">{{i.user_name}}</a>

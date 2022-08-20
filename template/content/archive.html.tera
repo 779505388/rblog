@@ -3,6 +3,7 @@
 {% block css %}
 <link rel="stylesheet" href="/static/css/archive.css">
 <link rel="stylesheet" href="/static/css/fontawesome.min.css">
+<meta name='description' content="文章归档"></meta>
 {% endblock css %}
 
 {% block title %}

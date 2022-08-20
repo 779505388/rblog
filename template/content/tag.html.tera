@@ -1,5 +1,9 @@
 {% extends "content/base" %}
 
+{% block css %}
+<meta name='description' content="标签内容"></meta>
+{% endblock css %}
+
 {% block title %}
 标签
 {% endblock title %}

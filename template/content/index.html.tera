@@ -1,5 +1,9 @@
 {% extends "content/base" %}
 
+{% block css %}
+<meta name='description' content="博客内容页面"></meta>
+{% endblock css %}
+
 {% block title %}
 首页{% if render_data.page_total>1 %}
 -第{{render_data.page}}页
@@ -44,7 +48,7 @@
             <!-- Author avatar -->
             <div id="author-avatar">
                 <img src='{{blog_info() | get(key="avatar_proxyz") }}/{{blog_info() | get(key="email_hash") }}'
-                    width="44px" height="44px">
+                  alt="头像"  width="44px" height="44px">
             </div>
             <div style="display: flex;flex-direction: column;">
                 <span class="author-name-span"><strong>{{blog_info()|get(key="nick_name") }}</strong></span>

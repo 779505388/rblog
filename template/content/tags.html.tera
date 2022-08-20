@@ -3,7 +3,7 @@
 {% block css %}
 <link rel="stylesheet" href="/static/css/tag.css">
 {% endblock css %}
-
+<meta name='description' content="标签云"></meta>
 {% block title %}
 标签云
 {% endblock title %}

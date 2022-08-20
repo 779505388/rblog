@@ -1,6 +1,7 @@
 {% extends "content/base" %}
 
 {% block css %}
+<meta name='description' content="友情链接"></meta>
 <link rel="stylesheet" href="/static/css/link.css">
 {% endblock css %}
 

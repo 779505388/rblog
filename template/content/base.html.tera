@@ -19,7 +19,7 @@
     {% endblock css %}
     {% include "content/include/meta" %}
     <title>
-        {% block title %}
+       {{blog_info() | get(key="blog_name")}}-{% block title %}
 
         {% endblock title %}
     </title>
