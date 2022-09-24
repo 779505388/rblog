@@ -1,3 +1,4 @@
+use chrono;
 use magic_crypt::{new_magic_crypt, MagicCryptTrait};
 use rbatis::DateTimeUtc;
 use rocket::{
@@ -56,9 +57,14 @@ impl<'r> FromRequest<'r> for CsrfStatus {
         let encrypt = response.get_one("X-CSRFToken").unwrap().to_string();
         let csrf_token = CsrfStatus::decrypt_csrf(csrf_key, encrypt).await;
         if csrf_token.csrf {
-            return Outcome::Success(csrf_token);
+            let now = DateTimeUtc::now().timestamp();
+            let _interval = now - csrf_token.date.unwrap().timestamp();
+            if _interval< 7200 {
+                return Outcome::Success(csrf_token);
+            };
+            return Outcome::Failure((Status::Unauthorized, ()));
         } else {
-            return Outcome::Failure((Status::Unauthorized,()));
+            return Outcome::Failure((Status::Forbidden, ()));
         }
     }
 }
@@ -72,8 +78,8 @@ pub struct CsrfKey {
 
 #[rocket::async_trait]
 impl<'r> FromRequest<'r> for CsrfKey {
+    //注入请求守卫
     type Error = ();
-
     async fn from_request(req: &'r Request<'_>) -> request::Outcome<Self, Self::Error> {
         let cookies = req.cookies();
         let cookie_value = cookies.get_private("csrf_key");
