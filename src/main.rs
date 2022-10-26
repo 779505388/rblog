@@ -25,7 +25,7 @@ use views::admin::{
 };
 use views::content::{
     about, archive, article, captcha, category, comment, home, link, login, 
-    register, tag,sitemap,
+    register, tag,sitemap,robots,
 };
 use views::error;
 // use fast_log;
@@ -78,6 +78,7 @@ async fn rocket() -> _ {
                 comment::index,
                 about::index,
                 sitemap::index,
+                robots::index,
             ],
         )
         .mount(
